@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 174071855072242248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.085999995, y: 0.097, z: 0}
-  m_LocalScale: {x: 0.079789996, y: 0.2666579, z: 1}
+  m_LocalScale: {x: 0.079789996, y: 0.2666579, z: 0.033356}
   m_Children: []
   m_Father: {fileID: 7923451137123207040}
   m_RootOrder: 4
@@ -240,7 +240,7 @@ Transform:
   m_GameObject: {fileID: 294318331717641263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.054, y: 0.314, z: 0}
-  m_LocalScale: {x: 0.080579996, y: 0.1809, z: 1}
+  m_LocalScale: {x: 0.080579996, y: 0.1809, z: 0.033356}
   m_Children: []
   m_Father: {fileID: 7923451137123207040}
   m_RootOrder: 3
@@ -420,6 +420,36 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &5166379511689773808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8151829810945143027}
+  m_Layer: 6
+  m_Name: GroundChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8151829810945143027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166379511689773808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.015, y: 0.004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7923451137123207040}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5532379857370007410
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +480,7 @@ Transform:
   m_GameObject: {fileID: 5532379857370007410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.054, y: 0.097, z: 0}
-  m_LocalScale: {x: 0.07268, y: 0.2666579, z: 1}
+  m_LocalScale: {x: 0.07268, y: 0.2666579, z: 0.033356}
   m_Children: []
   m_Father: {fileID: 7923451137123207040}
   m_RootOrder: 5
@@ -655,7 +685,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7105618379654817766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.016, y: 0.408, z: 0}
+  m_LocalPosition: {x: 0.007, y: 0.638, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7923451137123207040}
@@ -749,6 +779,7 @@ Transform:
   - {fileID: 8830739230656200074}
   - {fileID: 8688294109170623278}
   - {fileID: 5935871203524829858}
+  - {fileID: 8151829810945143027}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -795,12 +826,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Acceleration: 9
-  FlyPower: 16
+  FlyPower: 20
+  FlyTime: 1.5
   WalkSpeedLimit: 2
   assFlame: {fileID: 6462385748798005343}
   LegRotationForce: 200
   leg1: {fileID: 7812222452169789658}
   leg2: {fileID: 5741336602271696813}
+  flySprite: {fileID: 21300000, guid: 02e6b0a76f1b3df47bb3119069dce8db, type: 3}
+  standSprite: {fileID: 21300000, guid: 9f5156d7b7824da4bacfa0801ed094c0, type: 3}
+  groundChecker: {fileID: 8151829810945143027}
 --- !u!1 &8878458747504449604
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +866,7 @@ Transform:
   m_GameObject: {fileID: 8878458747504449604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.085999995, y: 0.314, z: 0}
-  m_LocalScale: {x: 0.07989862, y: 0.1809, z: 1}
+  m_LocalScale: {x: 0.07989862, y: 0.1809, z: 0.033356}
   m_Children: []
   m_Father: {fileID: 7923451137123207040}
   m_RootOrder: 2

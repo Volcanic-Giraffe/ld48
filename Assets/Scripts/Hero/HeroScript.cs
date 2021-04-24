@@ -9,32 +9,50 @@ public class HeroScript : MonoBehaviour
     public float Acceleration = 20;
     [Range(10, 20)]
     public float FlyPower = 1;
+    public float FlyTime = 1;
+    private float _flyTimer;
     public float WalkSpeedLimit = 3;
     public ParticleSystem assFlame;
     public float LegRotationForce;
     public Rigidbody leg1;
     public Rigidbody leg2;
 
+    public Sprite flySprite;
+    public Sprite standSprite;
+    public Transform groundChecker;
+
+
     MeshRenderer assFlameCube;
     private float _dx;
     private float _fly;
     private float _legTimer;
+    private SpriteRenderer _sr;
+    private bool floating;
+
     private void Start()
     {
+        _flyTimer = FlyTime;
         _rigidbody = GetComponent<Rigidbody>();
+        _sr = GetComponentInChildren<SpriteRenderer>();
         assFlameCube = assFlame.GetComponent<MeshRenderer>();
-        leg1.centerOfMass = new Vector3(0, -0.4f, 0);
-        leg2.centerOfMass = new Vector3(0, -0.4f, 0);
+        leg1.centerOfMass = new Vector3(0, -0.2f, 0);
+        leg2.centerOfMass = new Vector3(0, -0.2f, 0);
     }
 
 
     private void Update()
     {
         _dx = Input.GetAxisRaw("Horizontal");
-        _fly = Input.GetAxisRaw("Jump");
+        _sr.flipX = _dx < 0;
 
-        if (_fly != 0)
+        _fly = Input.GetAxisRaw("Jump");
+        if (_fly != 0) _sr.sprite = flySprite;
+        else _sr.sprite = standSprite;
+
+
+        if (_fly != 0 && _flyTimer > 0)
         {
+            _flyTimer -= Time.deltaTime;
             if (!assFlame.isPlaying)
             {
                 assFlame.Play();
@@ -47,6 +65,8 @@ public class HeroScript : MonoBehaviour
             assFlameCube.enabled = false;
         }
 
+        if (!floating) _flyTimer = FlyTime;
+
         _legTimer += Time.deltaTime;
         if (_legTimer >= 1f)
         {
@@ -56,12 +76,16 @@ public class HeroScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var floating = Math.Abs(_rigidbody.velocity.y) > 0.01f;
+#if(UNITY_EDITOR)
+        Debug.DrawRay(transform.position + Vector3.up * 0.5f, Vector3.up * -0.6f, Color.green);
+#endif
+        RaycastHit hit;
+        floating = !Physics.Raycast(transform.position + Vector3.up * 0.5f, -Vector3.up, out hit, 0.55f, ~LayerMask.GetMask("Hero", "HeroLegs"));
         leg1.angularDrag = 1;
         leg2.angularDrag = 1;
         if (_dx == 0)
         {
-            if (!floating)
+            if (!floating && _fly == 0)
             {
                 _rigidbody.velocity = Vector3.zero;
                 leg1.angularDrag = 10;
@@ -73,7 +97,7 @@ public class HeroScript : MonoBehaviour
             if (_legTimer < 0.5f)
                 leg1.AddTorque(new Vector3(0, 0, -_dx * LegRotationForce), ForceMode.VelocityChange);
             else
-                leg2.AddTorque(new Vector3(0, 0, -_dx * LegRotationForce), ForceMode.VelocityChange);
+                leg2.AddTorque(new Vector3(0, 0, -_dx * LegRotationForce), ForceMode.Impulse);
             if (
                 _rigidbody.velocity.x == 0 ||
                 Mathf.Sign(_rigidbody.velocity.x) != Mathf.Sign(_dx) ||
@@ -81,7 +105,7 @@ public class HeroScript : MonoBehaviour
                 _rigidbody.AddForce(_dx * Acceleration * Time.fixedDeltaTime, 0, 0, ForceMode.Impulse);
         }
 
-        if (_fly != 0)
+        if (_fly != 0 && _flyTimer > 0)
         {
             var vec = (Vector3.up + new Vector3(_dx * 0.2f, 0, 0)).normalized;
             _rigidbody.AddForce(vec * FlyPower * Time.fixedDeltaTime, ForceMode.VelocityChange);
