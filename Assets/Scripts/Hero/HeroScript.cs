@@ -11,17 +11,21 @@ public class HeroScript : MonoBehaviour
     public float FlyPower = 1;
     public float WalkSpeedLimit = 3;
     public ParticleSystem assFlame;
-    MeshRenderer assFlameCube;
+    public float LegRotationForce;
+    public Rigidbody leg1;
+    public Rigidbody leg2;
 
+    MeshRenderer assFlameCube;
+    private float _dx;
+    private float _fly;
+    private float _legTimer;
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         assFlameCube = assFlame.GetComponent<MeshRenderer>();
+        leg1.centerOfMass = new Vector3(0, 0.4f, 0);
+        leg2.centerOfMass = new Vector3(0, 0.4f, 0);
     }
-
-    private float _dx;
-    private float _fly;
-
 
 
     private void Update()
@@ -42,6 +46,12 @@ public class HeroScript : MonoBehaviour
             assFlame.Stop();
             assFlameCube.enabled = false;
         }
+
+        _legTimer += Time.deltaTime;
+        if (_legTimer >= 1f)
+        {
+            _legTimer = 0f;
+        }
     }
 
     private void FixedUpdate()
@@ -51,10 +61,18 @@ public class HeroScript : MonoBehaviour
         if (_dx == 0)
         {
             if (!floating)
+            {
                 _rigidbody.velocity = Vector3.zero;
+                leg1.angularVelocity = Vector3.zero;
+                leg2.angularVelocity = Vector3.zero;
+            }
         }
         else
         {
+            if (_legTimer < 0.5f)
+                leg1.AddTorque(new Vector3(0, 0, -_dx * LegRotationForce), ForceMode.VelocityChange);
+            else
+                leg2.AddTorque(new Vector3(0, 0, -_dx * LegRotationForce), ForceMode.VelocityChange);
             if (
                 _rigidbody.velocity.x == 0 ||
                 Mathf.Sign(_rigidbody.velocity.x) != Mathf.Sign(_dx) ||
@@ -64,8 +82,8 @@ public class HeroScript : MonoBehaviour
 
         if (_fly != 0)
         {
-            var vec = (Vector3.up + new Vector3(_dx*0.2f, 0, 0)).normalized;
-            _rigidbody.AddForce(vec * FlyPower * Time.fixedDeltaTime, ForceMode.Impulse);
+            var vec = (Vector3.up + new Vector3(_dx * 0.2f, 0, 0)).normalized;
+            _rigidbody.AddForce(vec * FlyPower * Time.fixedDeltaTime, ForceMode.VelocityChange);
         }
     }
 }
