@@ -798,7 +798,7 @@ MonoBehaviour:
   FlyPower: 16
   WalkSpeedLimit: 2
   assFlame: {fileID: 6462385748798005343}
-  LegRotationForce: 4
+  LegRotationForce: 200
   leg1: {fileID: 7812222452169789658}
   leg2: {fileID: 5741336602271696813}
 --- !u!1 &8878458747504449604

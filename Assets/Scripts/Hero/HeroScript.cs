@@ -23,8 +23,8 @@ public class HeroScript : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         assFlameCube = assFlame.GetComponent<MeshRenderer>();
-        leg1.centerOfMass = new Vector3(0, 0.4f, 0);
-        leg2.centerOfMass = new Vector3(0, 0.4f, 0);
+        leg1.centerOfMass = new Vector3(0, -0.4f, 0);
+        leg2.centerOfMass = new Vector3(0, -0.4f, 0);
     }
 
 
@@ -56,15 +56,16 @@ public class HeroScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var floating = _rigidbody.velocity.y != 0;
-
+        var floating = Math.Abs(_rigidbody.velocity.y) > 0.01f;
+        leg1.angularDrag = 1;
+        leg2.angularDrag = 1;
         if (_dx == 0)
         {
             if (!floating)
             {
                 _rigidbody.velocity = Vector3.zero;
-                leg1.angularVelocity = Vector3.zero;
-                leg2.angularVelocity = Vector3.zero;
+                leg1.angularDrag = 10;
+                leg2.angularDrag = 10;
             }
         }
         else
