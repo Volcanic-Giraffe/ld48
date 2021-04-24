@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 public class MainUI : MonoBehaviour
 {
     public TextMeshProUGUI centralHint;
+    public TextMeshProUGUI deadText;
     public TextMeshProUGUI roomName;
     public Slider jetpackMeter;
 
@@ -13,8 +15,19 @@ public class MainUI : MonoBehaviour
 
     private void Awake()
     {
+        Reset();
+    }
+
+    private void Reset()
+    {
+        centralHint.DOKill();
+        deadText.DOKill();
+        
         centralHint.SetText(string.Empty);
         roomName.SetText(string.Empty);
+        deadText.enabled = false;
+        
+        centralHint.color = Color.clear;
     }
 
     private void Start()
@@ -22,9 +35,27 @@ public class MainUI : MonoBehaviour
         _hero = FindObjectOfType<HeroScript>();
     }
 
-    public void SetCentralHint(string text, float time = 3.0f)
+    public void OnLevelRestart()
+    {
+        Reset();
+    }
+    
+    public void ShowHint(string text, float hideAfter = 3.0f, float delay = 0f)
     {
         centralHint.SetText(text);
+        centralHint.DOColor(Color.white, 0.1f).SetDelay(delay);
+
+        if (hideAfter > 0)
+        {
+            centralHint.DOColor(Color.clear, 0.1f).SetDelay(hideAfter + delay);
+        }
+    }
+
+    public void ShowDeadMessage()
+    {
+        deadText.enabled = true;
+        deadText.color = Color.clear;
+        deadText.DOColor(Color.white, 0.3f).SetDelay(1f);
     }
 
     public void SetRoomName(string text)

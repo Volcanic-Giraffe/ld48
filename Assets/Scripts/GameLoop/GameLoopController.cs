@@ -5,16 +5,42 @@ using UnityEngine.SceneManagement;
 
 public class GameLoopController : MonoBehaviour
 {
+    private const float RestartCooldown = 1f;
+    
     private GameObject Hero;
     public GameObject[] LevelPrefabs;
 
 
     private int _levelIdx = 0;
 
+    private float _restartCooldown;
+    
     private void Start()
     {
         Hero = GameObject.FindGameObjectWithTag("Player");
         StartLevel();
+    }
+
+    private void Update()
+    {
+        if (_restartCooldown >= 0) _restartCooldown -= Time.deltaTime;
+
+        if (Input.GetButtonDown("Level Restart") && _restartCooldown <= 0)
+        {
+            _restartCooldown = RestartCooldown;
+            RestartLevel();
+        }
+    }
+
+    public void RestartLevel()
+    {
+        StartLevel();
+
+        var hero = FindObjectOfType<HeroScript>();
+        hero.OnLevelRestart();
+
+        var ui = FindObjectOfType<MainUI>();
+        ui.OnLevelRestart();
     }
 
     public void StartLevel()
