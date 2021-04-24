@@ -5,16 +5,18 @@ public class HeroScript : MonoBehaviour
 {
     private Rigidbody _rigidbody;
 
-    [Range(15, 30)]
+    [Range(5, 30)]
     public float Acceleration = 20;
     [Range(10, 20)]
     public float FlyPower = 1;
     public float WalkSpeedLimit = 3;
     public ParticleSystem assFlame;
+    MeshRenderer assFlameCube;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        assFlameCube = assFlame.GetComponent<MeshRenderer>();
     }
 
     private float _dx;
@@ -30,11 +32,15 @@ public class HeroScript : MonoBehaviour
         if (_fly != 0)
         {
             if (!assFlame.isPlaying)
+            {
                 assFlame.Play();
+                assFlameCube.enabled = true;
+            }
         }
         else
         {
             assFlame.Stop();
+            assFlameCube.enabled = false;
         }
     }
 
@@ -58,7 +64,8 @@ public class HeroScript : MonoBehaviour
 
         if (_fly != 0)
         {
-            _rigidbody.AddForce(0, _fly * FlyPower * Time.fixedDeltaTime, 0, ForceMode.Impulse);
+            var vec = (Vector3.up + new Vector3(_dx*0.2f, 0, 0)).normalized;
+            _rigidbody.AddForce(vec * FlyPower * Time.fixedDeltaTime, ForceMode.Impulse);
         }
     }
 }
