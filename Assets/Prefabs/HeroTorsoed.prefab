@@ -853,7 +853,7 @@ MonoBehaviour:
   flySprite: {fileID: 21300000, guid: 02e6b0a76f1b3df47bb3119069dce8db, type: 3}
   standSprite: {fileID: 21300000, guid: 9f5156d7b7824da4bacfa0801ed094c0, type: 3}
   groundChecker: {fileID: 8151829810945143027}
-  fallDamageMagnitude: 10
+  fallDamageMagnitude: 15
   ragdollOnDeath: 1
 --- !u!1 &8878458747504449604
 GameObject:
