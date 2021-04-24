@@ -4,18 +4,23 @@ using UnityEngine;
 public class HeroScript : MonoBehaviour
 {
     private Rigidbody _rigidbody;
-    private ParticleSystem _particleSystem;
 
-    public float Speed = 1;
+    [Range(15, 30)]
+    public float Acceleration = 20;
+    [Range(10, 20)]
+    public float FlyPower = 1;
+    public float WalkSpeedLimit = 3;
+    public ParticleSystem assFlame;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _particleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     private float _dx;
     private float _fly;
+
+
 
     private void Update()
     {
@@ -24,12 +29,12 @@ public class HeroScript : MonoBehaviour
 
         if (_fly != 0)
         {
-            if (!_particleSystem.isPlaying)
-                _particleSystem.Play();
+            if (!assFlame.isPlaying)
+                assFlame.Play();
         }
         else
         {
-            _particleSystem.Stop();
+            assFlame.Stop();
         }
     }
 
@@ -44,12 +49,16 @@ public class HeroScript : MonoBehaviour
         }
         else
         {
-            _rigidbody.AddForce(_dx * Speed * Time.fixedDeltaTime, 0, 0, ForceMode.Impulse);
+            if (
+                _rigidbody.velocity.x == 0 ||
+                Mathf.Sign(_rigidbody.velocity.x) != Mathf.Sign(_dx) ||
+                (Mathf.Sign(_rigidbody.velocity.x) == Mathf.Sign(_dx) && Mathf.Abs(_rigidbody.velocity.x) < WalkSpeedLimit))
+                _rigidbody.AddForce(_dx * Acceleration * Time.fixedDeltaTime, 0, 0, ForceMode.Impulse);
         }
 
         if (_fly != 0)
         {
-            _rigidbody.AddForce(0, _fly * Speed * 0.3f, 0, ForceMode.Impulse);
+            _rigidbody.AddForce(0, _fly * FlyPower * Time.fixedDeltaTime, 0, ForceMode.Impulse);
         }
     }
 }
