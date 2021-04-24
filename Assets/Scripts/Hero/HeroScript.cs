@@ -25,9 +25,15 @@ public class HeroScript : MonoBehaviour
     [Tooltip("Ноге 2")]
     public Rigidbody leg2;
 
+    public CapsuleCollider slideCollider;
+    public CapsuleCollider groundCollider;
+    
     public Sprite flySprite;
     public Sprite standSprite;
     public Transform groundChecker;
+    
+    public float fallDamageMagnitude;
+    public bool ragdollOnDeath;
 
 
     MeshRenderer assFlameCube;
@@ -36,6 +42,8 @@ public class HeroScript : MonoBehaviour
     private float _legTimer;
     private SpriteRenderer _sr;
     private bool floating;
+    
+    private bool _died;
 
     public float RemainingFly => FlyTime > 0 ? _flyTimer / FlyTime : 1f;
 
@@ -52,6 +60,11 @@ public class HeroScript : MonoBehaviour
 
     private void Update()
     {
+        if (_died)
+        {
+            return;
+        }
+
         _dx = Input.GetAxisRaw("Horizontal");
         _sr.flipX = _dx < 0;
 
@@ -89,6 +102,12 @@ public class HeroScript : MonoBehaviour
 #if(UNITY_EDITOR)
         Debug.DrawRay(transform.position + Vector3.up * 0.5f, Vector3.up * -0.6f, Color.green);
 #endif
+
+        if (_died)
+        {
+            return;
+        }
+        
         RaycastHit hit;
         floating = !Physics.Raycast(transform.position + Vector3.up * 0.5f, -Vector3.up, out hit, 0.55f, ~LayerMask.GetMask("Hero", "HeroLegs"));
         leg1.angularDrag = 1;
@@ -119,6 +138,26 @@ public class HeroScript : MonoBehaviour
         {
             var vec = (Vector3.up + new Vector3(_dx * 0.2f, 0, 0)).normalized;
             _rigidbody.AddForce(vec * FlyPower * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        }
+    }
+
+    public void DieHero()
+    {
+        if (_died) return;
+        _died = true;
+
+        _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
+                                 RigidbodyConstraints.FreezePositionZ;
+        
+        slideCollider.enabled = false;
+        groundCollider.height = 0.5f;
+    }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.impulse.magnitude > fallDamageMagnitude && ragdollOnDeath)
+        {
+            DieHero();
         }
     }
 }
