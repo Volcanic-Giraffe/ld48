@@ -37,6 +37,8 @@ public class HeroScript : MonoBehaviour
     private SpriteRenderer _sr;
     private bool floating;
 
+    public float RemainingFly => FlyTime > 0 ? _flyTimer / FlyTime : 1f;
+
     private void Start()
     {
         _flyTimer = FlyTime;
