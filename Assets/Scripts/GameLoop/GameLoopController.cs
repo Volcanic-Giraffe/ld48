@@ -27,6 +27,7 @@ public class GameLoopController : MonoBehaviour
         var enter = GameObject.FindGameObjectWithTag("Enter");
         if (enter == null) throw new Exception($"В {_levelPrefab} не найден вход, добавьте объект с тэгом Enter");
         Hero.transform.position = enter.transform.position - Vector3.up;
+        foreach (var cmp in Hero.GetComponents<HeroMod>()) Destroy(cmp as MonoBehaviour);
     }
 
     public void OnExit()
