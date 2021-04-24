@@ -5,6 +5,7 @@ using UnityEngine;
 public class Flameable : MonoBehaviour
 {
     public event Action OnFlameStopped;
+    public event Action OnFlameStarted;
     public float SecondsToFire = -1;
     public bool DecreaseFireWithTime;
 
@@ -27,6 +28,7 @@ public class Flameable : MonoBehaviour
         
         if (_isBurning) return;
         _isBurning = true;
+        OnFlameStarted?.Invoke();
         _fire = Instantiate(FirePrefab, transform);
         _initialRate = _fire.emission.rateOverTimeMultiplier;
     }
@@ -43,7 +45,7 @@ public class Flameable : MonoBehaviour
         {
             var emissionModule = _fire.emission;
             emissionModule.rateOverTimeMultiplier =
-                _initialRate * (1 - (Time.time - _whenStartedToFire) / SecondsToFire);
+                _initialRate * (1 - (Time.time - _whenStartedToFire) / SecondsToFire) * transform.localScale.x;
         }
 
         if (_isBurning)
