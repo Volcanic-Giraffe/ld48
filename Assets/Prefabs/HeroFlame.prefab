@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1456866734275287029}
   - component: {fileID: 4297933886466506632}
   - component: {fileID: 3336028942298026290}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: HeroFlame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3851,7 +3851,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967167
+      m_Bits: 4294966847
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
