@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561f1ebf21784a058b560ec9b12a1d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 25
+  Acceleration: 20
   FlyPower: 14.52
   WalkSpeedLimit: 5
   assFlame: {fileID: 6462385748798005343}
@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 771730252209560488, guid: 81dfe9821ee2c354bbc38e7e5ff63e0d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.12041
       objectReference: {fileID: 0}
     - target: {fileID: 771730252209560488, guid: 81dfe9821ee2c354bbc38e7e5ff63e0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 771730252209560488, guid: 81dfe9821ee2c354bbc38e7e5ff63e0d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.124
       objectReference: {fileID: 0}
     - target: {fileID: 771730252209560488, guid: 81dfe9821ee2c354bbc38e7e5ff63e0d, type: 3}
       propertyPath: m_LocalRotation.w
