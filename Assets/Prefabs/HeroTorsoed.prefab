@@ -825,10 +825,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561f1ebf21784a058b560ec9b12a1d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 9
+  Acceleration: 12.1
   FlyPower: 20
   FlyTime: 1.5
-  WalkSpeedLimit: 2
+  WalkSpeedLimit: 3
   assFlame: {fileID: 6462385748798005343}
   LegRotationForce: 200
   leg1: {fileID: 7812222452169789658}

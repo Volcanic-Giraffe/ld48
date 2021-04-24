@@ -6,15 +6,23 @@ public class HeroScript : MonoBehaviour
     private Rigidbody _rigidbody;
 
     [Range(5, 30)]
+    [Tooltip("Насколько быстро герой ускоряется при ходьбе")]
     public float Acceleration = 20;
     [Range(10, 20)]
+    [Tooltip("Насколько эффективна жопная тяга")]
     public float FlyPower = 1;
+    [Tooltip("Время, на которое хватает запаса топлива в жопе")]
     public float FlyTime = 1;
     private float _flyTimer;
+    [Tooltip("Абсолютное ограничение скорости при ходьбе")]
     public float WalkSpeedLimit = 3;
+    [Tooltip("Партиклер жопы")]
     public ParticleSystem assFlame;
+    [Tooltip("Сила вращения ног (не работает)")]
     public float LegRotationForce;
+    [Tooltip("Ноге 1")]
     public Rigidbody leg1;
+    [Tooltip("Ноге 2")]
     public Rigidbody leg2;
 
     public Sprite flySprite;
