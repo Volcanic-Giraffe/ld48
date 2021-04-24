@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5591848400619500586}
   - component: {fileID: 5995992194658467505}
   - component: {fileID: 1928749928719617793}
+  - component: {fileID: 8405780671669446501}
   m_Layer: 0
   m_Name: Eye1_3
   m_TagString: Untagged
@@ -96,6 +97,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8405780671669446501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359129401361082615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18fb3abc98b7e74b841281c1b8881e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amplitude: 0.2
 --- !u!1 &632013979985318917
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +219,7 @@ GameObject:
   - component: {fileID: 580755685092922849}
   - component: {fileID: 2678576034924273311}
   - component: {fileID: 4316123427803596387}
+  - component: {fileID: 273907542062712867}
   m_Layer: 0
   m_Name: Eye1_2
   m_TagString: Untagged
@@ -289,6 +304,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &273907542062712867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872480510415597233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18fb3abc98b7e74b841281c1b8881e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amplitude: 0.2
 --- !u!1 &910994088773819041
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +329,7 @@ GameObject:
   - component: {fileID: 3887341342899209559}
   - component: {fileID: 8464870493960596282}
   - component: {fileID: 3424326616777590384}
+  - component: {fileID: 9195983099139432960}
   m_Layer: 0
   m_Name: Eye1_3
   m_TagString: Untagged
@@ -385,6 +414,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9195983099139432960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910994088773819041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18fb3abc98b7e74b841281c1b8881e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amplitude: 0.2
 --- !u!1 &2219428715381086813
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,6 +2933,7 @@ GameObject:
   - component: {fileID: 2152448692033042421}
   - component: {fileID: 5976722893762756398}
   - component: {fileID: 3374203882815767357}
+  - component: {fileID: 2397543929836446461}
   m_Layer: 0
   m_Name: Eye1_2
   m_TagString: Untagged
@@ -2975,6 +3018,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2397543929836446461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334141189611434393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18fb3abc98b7e74b841281c1b8881e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amplitude: 0.2
 --- !u!1 &4338135742535008333
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,6 +3458,7 @@ GameObject:
   - component: {fileID: 1617090184401381824}
   - component: {fileID: 1454737953628490720}
   - component: {fileID: 708931373204706368}
+  - component: {fileID: 2779190264985534370}
   m_Layer: 0
   m_Name: Eye1_1
   m_TagString: Untagged
@@ -3486,6 +3543,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2779190264985534370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828698690301458944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18fb3abc98b7e74b841281c1b8881e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amplitude: 0.2
 --- !u!1 &5102302141387793452
 GameObject:
   m_ObjectHideFlags: 0
@@ -6859,6 +6929,7 @@ GameObject:
   - component: {fileID: 6256621306564670290}
   - component: {fileID: 3501765142011723029}
   - component: {fileID: 4157311076058935266}
+  - component: {fileID: 7745683205055467338}
   m_Layer: 0
   m_Name: Eye1
   m_TagString: Untagged
@@ -6943,6 +7014,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7745683205055467338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9027944610686848360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18fb3abc98b7e74b841281c1b8881e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amplitude: 0.2
 --- !u!1 &9075875426271606922
 GameObject:
   m_ObjectHideFlags: 0
