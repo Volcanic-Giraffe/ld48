@@ -45,19 +45,49 @@ public class HeroScript : MonoBehaviour
     
     private bool _died;
 
+    private MainUI _ui;
+
+    private Quaternion _originalRotation;
+    private float _originalGroundColliderHeight;
+    private RigidbodyConstraints _originalConstraints;
+    
     public float RemainingFly => FlyTime > 0 ? _flyTimer / FlyTime : 1f;
 
-    private void Start()
+    public bool Died => _died;
+
+    private void Awake()
     {
         _flyTimer = FlyTime;
         _rigidbody = GetComponent<Rigidbody>();
         _sr = GetComponentInChildren<SpriteRenderer>();
         assFlameCube = assFlame.GetComponent<MeshRenderer>();
+        
+        _ui = FindObjectOfType<MainUI>();
+
+        _originalRotation = transform.rotation;
+        _originalGroundColliderHeight = groundCollider.height;
+        _originalConstraints = _rigidbody.constraints;
+    }
+
+    private void Start()
+    {
         leg1.centerOfMass = new Vector3(0, -0.2f, 0);
         leg2.centerOfMass = new Vector3(0, -0.2f, 0);
     }
-
-
+    
+    public void OnLevelRestart()
+    {
+        slideCollider.enabled = true;
+        groundCollider.height = _originalGroundColliderHeight;
+        _rigidbody.constraints = _originalConstraints;
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
+        transform.rotation = _originalRotation;
+        
+        
+        _died = false;
+    }
+    
     private void Update()
     {
         if (_died)
@@ -151,6 +181,9 @@ public class HeroScript : MonoBehaviour
         
         slideCollider.enabled = false;
         groundCollider.height = 0.5f;
+
+        _ui.ShowDeadMessage();
+        _ui.ShowHint("press [R] to restart", -1, 3.5f);
     }
     
     private void OnCollisionEnter(Collision collision)
