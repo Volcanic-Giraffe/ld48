@@ -10,13 +10,13 @@ public class GameLoopController : MonoBehaviour
 
 
     private int _levelIdx = 0;
-    
-    private void Awake()
+
+    private void Start()
     {
-        DontDestroyOnLoad(this);
+        StartLevel();
     }
 
-    public void Start()
+    public void StartLevel()
     {
         foreach (Transform t in transform)
         {
@@ -30,7 +30,7 @@ public class GameLoopController : MonoBehaviour
         _levelIdx++;
         if (_levelIdx < LevelPrefabs.Length)
         {
-            SceneManager.LoadScene("MainScene");
+            StartLevel();
         }
         else
         {
