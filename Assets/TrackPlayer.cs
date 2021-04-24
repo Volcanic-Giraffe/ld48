@@ -1,14 +1,20 @@
 using UnityEngine;
 
+public enum TrackBehaviour
+{
+    LocalPos,
+    GlobalPos
+}
 public class TrackPlayer : MonoBehaviour
 {
+    public TrackBehaviour TrackBehaviour = TrackBehaviour.GlobalPos;
     public float Amplitude = 0.3f;
     private Vector3 startPos;
     private GameObject hero;
 
     void Start()
     {
-        startPos = transform.localPosition;
+        startPos = TrackBehaviour == TrackBehaviour.GlobalPos ? transform.position : transform.localPosition;
         hero = GameObject.FindGameObjectWithTag("Player");
         if (hero == null)
         {
@@ -19,8 +25,21 @@ public class TrackPlayer : MonoBehaviour
 
     void Update()
     {
-        var vc = (transform.parent.position + startPos) - hero.transform.position;
-        var scale = Mathf.Min(vc.magnitude / 10, 1);
-        transform.localPosition = startPos+vc.normalized * (Amplitude / scale);
+        switch (TrackBehaviour)
+        {
+            case TrackBehaviour.LocalPos:
+                var vc = hero.transform.position - (transform.parent.position + startPos);
+                var scale = Mathf.Min(vc.magnitude / 10, 1);
+                var newPos = startPos + vc.normalized * (Amplitude / scale);
+                transform.localPosition = new Vector3(newPos.x, newPos.y, startPos.z);
+                break;
+            case TrackBehaviour.GlobalPos:
+            default:
+                vc = hero.transform.position - startPos;
+                scale = Mathf.Min(vc.magnitude / 10, 1);
+                newPos = startPos + vc.normalized * (Amplitude * scale);
+                transform.position = new Vector3(newPos.x, newPos.y, startPos.z);
+                break;
+        }
     }
 }
