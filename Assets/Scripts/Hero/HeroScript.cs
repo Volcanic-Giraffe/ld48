@@ -27,11 +27,11 @@ public class HeroScript : MonoBehaviour
 
     public CapsuleCollider slideCollider;
     public CapsuleCollider groundCollider;
-    
+
     public Sprite flySprite;
     public Sprite standSprite;
     public Transform groundChecker;
-    
+
     public float fallDamageMagnitude;
     public bool ragdollOnDeath;
 
@@ -42,7 +42,7 @@ public class HeroScript : MonoBehaviour
     private float _legTimer;
     private SpriteRenderer _sr;
     private bool floating;
-    
+
     private bool _died;
 
     private MainUI _ui;
@@ -50,7 +50,7 @@ public class HeroScript : MonoBehaviour
     private Quaternion _originalRotation;
     private float _originalGroundColliderHeight;
     private RigidbodyConstraints _originalConstraints;
-    
+
     public float RemainingFly => FlyTime > 0 ? _flyTimer / FlyTime : 1f;
 
     public bool Died => _died;
@@ -61,7 +61,7 @@ public class HeroScript : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _sr = GetComponentInChildren<SpriteRenderer>();
         assFlameCube = assFlame.GetComponent<MeshRenderer>();
-        
+
         _ui = FindObjectOfType<MainUI>();
 
         _originalRotation = transform.rotation;
@@ -74,7 +74,7 @@ public class HeroScript : MonoBehaviour
         leg1.centerOfMass = new Vector3(0, -0.2f, 0);
         leg2.centerOfMass = new Vector3(0, -0.2f, 0);
     }
-    
+
     public void OnLevelRestart()
     {
         slideCollider.enabled = true;
@@ -83,11 +83,11 @@ public class HeroScript : MonoBehaviour
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.angularVelocity = Vector3.zero;
         transform.rotation = _originalRotation;
-        
-        
+
+
         _died = false;
     }
-    
+
     private void Update()
     {
         if (_died)
@@ -96,7 +96,8 @@ public class HeroScript : MonoBehaviour
         }
 
         _dx = Input.GetAxisRaw("Horizontal");
-        _sr.flipX = _dx < 0;
+        if (_dx < 0) _sr.flipX = true; 
+        if (_dx > 0) _sr.flipX = false;
 
         _fly = Input.GetAxisRaw("Jump");
         if (_fly != 0) _sr.sprite = flySprite;
@@ -137,7 +138,7 @@ public class HeroScript : MonoBehaviour
         {
             return;
         }
-        
+
         RaycastHit hit;
         floating = !Physics.Raycast(transform.position + Vector3.up * 0.5f, -Vector3.up, out hit, 0.55f, ~LayerMask.GetMask("Hero", "HeroLegs"));
         leg1.angularDrag = 1;
@@ -178,14 +179,14 @@ public class HeroScript : MonoBehaviour
 
         _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
                                  RigidbodyConstraints.FreezePositionZ;
-        
+
         slideCollider.enabled = false;
         groundCollider.height = 0.5f;
 
         _ui.ShowDeadMessage();
         _ui.ShowHint("press [R] to restart", -1, 3.5f);
     }
-    
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.impulse.magnitude > fallDamageMagnitude && ragdollOnDeath)
