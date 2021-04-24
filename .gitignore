@@ -62,8 +62,8 @@ crashlytics-build.properties
 /SketchesAndBlender/*.blend1
 
 # Ruslan uses some plugins from asset store
-/Assets/Plugins/
-/Assets/Plugins.meta
+# /Assets/Plugins/
+# /Assets/Plugins.meta
 
 /Assets/TextMesh Pro.meta
 /BuildWeb
