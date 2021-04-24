@@ -13,6 +13,7 @@ TagManager:
   - UI
   - Hero
   - HeroLegs
+  - IgnoreFireParticles
   - 
   - 
   - 
@@ -37,6 +38,7 @@ TagManager:
   - 
   - 
   - 
+  -
   m_SortingLayers:
   - name: Default
     uniqueID: 0
