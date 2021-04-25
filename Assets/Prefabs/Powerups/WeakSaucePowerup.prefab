@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3896424967729905536}
-  - component: {fileID: 3896424967729905537}
   - component: {fileID: 2925152001473720488}
   - component: {fileID: 8499053453517187627}
   - component: {fileID: 534855845107088023}
+  - component: {fileID: 6767364662101898255}
   m_Layer: 0
   m_Name: WeakSaucePowerup
   m_TagString: Untagged
@@ -35,25 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3896424967729905537
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3896424967729905532}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ba8d1076327a83146a1baa7ecdb0576b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &2925152001473720488
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -95,6 +76,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Coefficient: 0.6
+--- !u!114 &6767364662101898255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3896424967729905532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924f3c25a38f50f4e89b367fb3efe1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amount: 0.3
+  Duration: 1
 --- !u!1 &6520114189429155820
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +162,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b11931593ebf5e24fa9de1c388ddcd47, type: 3}
+  m_Sprite: {fileID: 21300000, guid: beee3bb6bb54c934083360ff065b0c98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
