@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 7643573560746349438}
   - component: {fileID: 2175267005166556994}
   - component: {fileID: 2315023046402170}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Chudila_3h
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,6 +841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrackBehaviour: 0
   Amplitude: 0.1
+  LookAt: 0
+  AtMaxDistance: 0
 --- !u!1 &5010307945865146403
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,6 +954,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrackBehaviour: 0
   Amplitude: 0.2
+  LookAt: 0
+  AtMaxDistance: 0
 --- !u!1 &5317388399476929267
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +968,7 @@ GameObject:
   - component: {fileID: 7049378709007304501}
   - component: {fileID: 6118832936422110878}
   - component: {fileID: 4401148477015130368}
+  - component: {fileID: 8113987857573054688}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1049,6 +1054,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8113987857573054688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5317388399476929267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7643b3df3e9b45ab95ff02945b88eaca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SecondsToFire: 4
+  DecreaseFireWithTime: 1
+  FirePrefab: {fileID: 1456866734275287029, guid: d5edd98ea39f8744e825a8250cd2e1d4, type: 3}
 --- !u!1 &5397765944823248212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,6 +1337,7 @@ GameObject:
   - component: {fileID: 3358350160862579121}
   - component: {fileID: 5305484290707702925}
   - component: {fileID: 2984562382762465541}
+  - component: {fileID: 5490144772571855189}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1402,6 +1423,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5490144772571855189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6127630104691446871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7643b3df3e9b45ab95ff02945b88eaca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SecondsToFire: 4
+  DecreaseFireWithTime: 1
+  FirePrefab: {fileID: 1456866734275287029, guid: d5edd98ea39f8744e825a8250cd2e1d4, type: 3}
 --- !u!1 &7607295723649787296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1616,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrackBehaviour: 0
   Amplitude: 0.1
+  LookAt: 0
+  AtMaxDistance: 0
 --- !u!1 &8183876112464008161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,6 +1630,7 @@ GameObject:
   - component: {fileID: 5583194934837709731}
   - component: {fileID: 3265981939022539287}
   - component: {fileID: 1178797582425485724}
+  - component: {fileID: 5774587587252474640}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1677,6 +1716,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5774587587252474640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183876112464008161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7643b3df3e9b45ab95ff02945b88eaca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SecondsToFire: 4
+  DecreaseFireWithTime: 1
+  FirePrefab: {fileID: 1456866734275287029, guid: d5edd98ea39f8744e825a8250cd2e1d4, type: 3}
 --- !u!1 &8252335403549112283
 GameObject:
   m_ObjectHideFlags: 0

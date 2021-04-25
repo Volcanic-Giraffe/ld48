@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 7643573560746349438}
   - component: {fileID: 2315023046402170}
   - component: {fileID: 5165726724592889979}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Chudila_small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,6 +372,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrackBehaviour: 0
   Amplitude: 0.1
+  LookAt: 0
+  AtMaxDistance: 0
 --- !u!1 &6127630104691446871
 GameObject:
   m_ObjectHideFlags: 0

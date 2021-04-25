@@ -158,7 +158,7 @@ public class HeroScript : MonoBehaviour
         leg2.maxAngularVelocity = LegMaxAngVel;
 
         RaycastHit hit;
-        floating = !Physics.Raycast(transform.position + Vector3.up * 0.5f, -Vector3.up, out hit, 0.55f, ~LayerMask.GetMask("Hero", "HeroLegs"));
+        floating = !Physics.Raycast(transform.position + Vector3.up * 0.5f, -Vector3.up, out hit, 0.55f, ~LayerMask.GetMask("Hero", "HeroLegs", "IgnoreHero"));
         leg1.angularDrag = LegAngDragFly;
         leg2.angularDrag = LegAngDragFly;
         if (_dx == 0)
