@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5516730466147293587}
+  - component: {fileID: 4663336884886003313}
   - component: {fileID: 4090897769298681105}
-  - component: {fileID: 4879365209648486943}
-  - component: {fileID: 8437384529904079901}
   m_Layer: 15
-  m_Name: Oil
+  m_Name: Oil_without_flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &4663336884886003313
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516730466147293676}
+  m_Material: {fileID: 13400000, guid: 9778ab4f8da1b2148bb9c4f9a883335f, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4090897769298681105
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -50,35 +62,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4879365209648486943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5516730466147293676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7643b3df3e9b45ab95ff02945b88eaca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SecondsToFire: -1
-  DecreaseFireWithTime: 0
-  FirePrefab: {fileID: 1662411767086274725, guid: 584aa3115963b9847acecc4890f450f4, type: 3}
---- !u!136 &8437384529904079901
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5516730466147293676}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8942111556049009160
 GameObject:
   m_ObjectHideFlags: 0
