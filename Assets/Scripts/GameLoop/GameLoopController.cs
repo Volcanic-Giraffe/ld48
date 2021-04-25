@@ -7,6 +7,7 @@ public class GameLoopController : MonoBehaviour
     private const float RestartCooldown = 1f;
 
     private GameObject Hero;
+    private MainUI _ui;
     public GameObject[] LevelPrefabs;
 
 
@@ -19,6 +20,7 @@ public class GameLoopController : MonoBehaviour
     private void Start()
     {
         Hero = GameObject.FindGameObjectWithTag("Player");
+        _ui = FindObjectOfType<MainUI>();
         StartLevel();
     }
 
@@ -58,6 +60,7 @@ public class GameLoopController : MonoBehaviour
         {
             PauseLevel();
         }
+        _ui.TogglePause(_paused);
     }
 
     public void PauseLevel()

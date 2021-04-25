@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ModContainer : MonoBehaviour
 {
+    public string Name;
+    public string Description;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -16,6 +18,10 @@ public class ModContainer : MonoBehaviour
                 var heroMod = other.gameObject.AddComponent(mod.GetType()) as HeroMod;
                 heroMod.Coefficient = mod.Coefficient;
             }
+            
+            var ui = FindObjectOfType<MainUI>();
+            ui.ShowPowerup(Name, Description);
+
             Destroy(gameObject);
         }
     }

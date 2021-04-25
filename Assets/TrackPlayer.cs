@@ -30,7 +30,7 @@ public class TrackPlayer : MonoBehaviour
             case TrackBehaviour.LocalPos:
                 var vc = hero.transform.position - (transform.parent.position + startPos);
                 var scale = Mathf.Min(vc.magnitude / 10, 1);
-                var newPos = startPos + vc.normalized * (Amplitude / scale);
+                var newPos = startPos + vc.normalized * (Amplitude * scale);
                 transform.localPosition = new Vector3(newPos.x, newPos.y, startPos.z);
                 break;
             case TrackBehaviour.GlobalPos:

@@ -9267,7 +9267,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3288161168479339002, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: roomName
-      value: The Divide
+      value: Split
       objectReference: {fileID: 0}
     - target: {fileID: 7724971706533982367, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: m_LocalPosition.x
