@@ -12,6 +12,13 @@ public class MeshProducer : MonoBehaviour
 
     public float Intensity = 1f;
 
+    private Transform _parent;
+
+    private void Awake()
+    {
+        _parent = transform.parent;
+    }
+
     public void SetIntensity(float intensity)
     {
         Intensity = intensity;
@@ -31,7 +38,7 @@ public class MeshProducer : MonoBehaviour
         var go = Instantiate(
             prefab, 
             transform.position + Random.insideUnitSphere*Randomize, 
-            transform.rotation
+            transform.rotation, _parent
         );
         go.transform.localScale = go.transform.localScale * (1 + Randomize * Random.Range(-0.5f, 0.1f));
 
