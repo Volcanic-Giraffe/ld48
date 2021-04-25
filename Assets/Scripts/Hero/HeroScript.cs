@@ -133,12 +133,16 @@ public class HeroScript : MonoBehaviour
             {
                 assFlame.Play();
                 assFlameCube.enabled = true;
+                
+                _sounds.PlayLoop("jet2_loop");
             }
         }
         else
         {
             assFlame.Stop();
             assFlameCube.enabled = false;
+            
+            _sounds.StopLoop("jet2_loop");
         }
 
         if (!floating) _flyTimer = FlyTime;
