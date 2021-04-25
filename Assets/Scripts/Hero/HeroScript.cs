@@ -18,13 +18,25 @@ public class HeroScript : MonoBehaviour
     public float WalkSpeedLimit = 3;
     [Tooltip("Партиклер жопы")]
     public ParticleSystem assFlame;
-    [Tooltip("Сила вращения ног (не работает)")]
+    
+    [Space]
+    [Header("Legs:")]
+    [Tooltip("Сила вращения ног (1-мало, 20-быстро)")]
     public float LegRotationForce;
+    [Tooltip("Скованность ног когда летит")]
+    public float LegAngDragFly;
+    [Tooltip("Скованность ног когда стоит")]
+    public float LegAngDragStay;
+    [Tooltip("Максимальная скорость вращения ногов (>50 - физика трещит")]
+    public float LegMaxAngVel;
+    
     [Tooltip("Ноге 1")]
     public Rigidbody leg1;
     [Tooltip("Ноге 2")]
     public Rigidbody leg2;
 
+    
+    [Space]
     public CapsuleCollider slideCollider;
     public CapsuleCollider groundCollider;
 
@@ -138,18 +150,21 @@ public class HeroScript : MonoBehaviour
         {
             return;
         }
+        
+        leg1.maxAngularVelocity = LegMaxAngVel;
+        leg2.maxAngularVelocity = LegMaxAngVel;
 
         RaycastHit hit;
         floating = !Physics.Raycast(transform.position + Vector3.up * 0.5f, -Vector3.up, out hit, 0.55f, ~LayerMask.GetMask("Hero", "HeroLegs"));
-        leg1.angularDrag = 1;
-        leg2.angularDrag = 1;
+        leg1.angularDrag = LegAngDragFly;
+        leg2.angularDrag = LegAngDragFly;
         if (_dx == 0)
         {
             if (!floating && _fly == 0)
             {
                 _rigidbody.velocity = Vector3.zero;
-                leg1.angularDrag = 10;
-                leg2.angularDrag = 10;
+                leg1.angularDrag = LegAngDragStay;
+                leg2.angularDrag = LegAngDragStay;
             }
         }
         else
@@ -157,7 +172,7 @@ public class HeroScript : MonoBehaviour
             if (_legTimer < 0.5f)
                 leg1.AddTorque(new Vector3(0, 0, -_dx * LegRotationForce), ForceMode.VelocityChange);
             else
-                leg2.AddTorque(new Vector3(0, 0, -_dx * LegRotationForce), ForceMode.Impulse);
+                leg2.AddTorque(new Vector3(0, 0, -_dx * LegRotationForce), ForceMode.VelocityChange);
             if (
                 _rigidbody.velocity.x == 0 ||
                 Mathf.Sign(_rigidbody.velocity.x) != Mathf.Sign(_dx) ||
