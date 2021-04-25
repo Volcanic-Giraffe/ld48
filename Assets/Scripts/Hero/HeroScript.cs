@@ -61,6 +61,7 @@ public class HeroScript : MonoBehaviour
 
     private GameLoopController _game;
     private MainUI _ui;
+    private Sounds _sounds;
 
     private Quaternion _originalRotation;
     private float _originalGroundColliderHeight;
@@ -78,6 +79,7 @@ public class HeroScript : MonoBehaviour
 
         _ui = FindObjectOfType<MainUI>();
         _game = FindObjectOfType<GameLoopController>();
+        _sounds = FindObjectOfType<Sounds>();
 
         _originalRotation = transform.rotation;
         _originalGroundColliderHeight = groundCollider.height;
@@ -217,6 +219,11 @@ public class HeroScript : MonoBehaviour
         if (collision.impulse.magnitude > fallDamageMagnitude && ragdollOnDeath)
         {
             DieHero();
+        }
+
+        if (collision.impulse.magnitude > 1f)
+        {
+            _sounds.PlayRandom("pillow_");            
         }
     }
 }
