@@ -7688,7 +7688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5380919083072561288}
   m_Layer: 0
-  m_Name: Room_a1
+  m_Name: Room_a3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13512,14 +13512,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5380919083072561288}
     m_Modifications:
-    - target: {fileID: -992710084935095313, guid: 64a6c25105372ee45b4c130127c92260, type: 3}
-      propertyPath: Coefficient
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 534855845107088023, guid: 64a6c25105372ee45b4c130127c92260, type: 3}
-      propertyPath: Coefficient
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 3896424967729905532, guid: 64a6c25105372ee45b4c130127c92260, type: 3}
       propertyPath: m_Name
       value: ExplosivePowerup
