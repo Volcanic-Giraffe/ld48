@@ -243,14 +243,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameLoopController
       objectReference: {fileID: 0}
-    - target: {fileID: 2235243750438912777, guid: d62c7a3b68e54804c8cd14879a57f792, type: 3}
-      propertyPath: LevelPrefabs.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2235243750438912777, guid: d62c7a3b68e54804c8cd14879a57f792, type: 3}
-      propertyPath: LevelPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 2292575823381322294, guid: 0d3cdc81daa736b4da0ccad4b0e34786, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62c7a3b68e54804c8cd14879a57f792, type: 3}
 --- !u!1001 &1660691546
