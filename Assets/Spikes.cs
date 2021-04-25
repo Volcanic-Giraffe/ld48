@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
-    private float velocityLimit = -1f;
+    private float magnitudeToKill = 3f;
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && other.attachedRigidbody.velocity.y < velocityLimit)
+        if (other.CompareTag("Player") && other.attachedRigidbody.velocity.magnitude > magnitudeToKill)
         {
-          // KILL    
+            var hero = other.GetComponent<HeroScript>();
+
+            hero.DieHero();
         }
     }
 }

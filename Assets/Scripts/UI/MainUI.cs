@@ -43,11 +43,13 @@ public class MainUI : MonoBehaviour
     public void ShowHint(string text, float hideAfter = 3.0f, float delay = 0f)
     {
         centralHint.SetText(text);
-        centralHint.DOColor(Color.white, 0.1f).SetDelay(delay);
-
+        centralHint.color = Color.clear;
+        centralHint.DOColor(Color.white, 0.2f).SetDelay(delay);
+        centralHint.transform.DOPunchScale(Vector3.one * 0.1f,0.3f);
+        
         if (hideAfter > 0)
         {
-            centralHint.DOColor(Color.clear, 0.1f).SetDelay(hideAfter + delay);
+            centralHint.DOColor(Color.clear, 0.2f).SetDelay(hideAfter + delay);
         }
     }
 
@@ -58,8 +60,10 @@ public class MainUI : MonoBehaviour
         deadText.DOColor(Color.white, 0.3f).SetDelay(1f);
     }
 
-    public void SetRoomName(string text)
+    public void ShowRoomName(string text)
     {
+        text ??= string.Empty;
+
         roomName.SetText(text);
     }
 

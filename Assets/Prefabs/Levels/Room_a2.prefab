@@ -6990,6 +6990,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.08
       objectReference: {fileID: 0}
+    - target: {fileID: 3288161168479339002, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
+      propertyPath: roomName
+      value: Clockworks
+      objectReference: {fileID: 0}
     - target: {fileID: 8310613164660376981, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7132,7 +7136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6667601369182542591, guid: fa67b787247e8774196fb70327dbe51d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.24
+      value: -4.14
       objectReference: {fileID: 0}
     - target: {fileID: 6667601369182542591, guid: fa67b787247e8774196fb70327dbe51d, type: 3}
       propertyPath: m_LocalPosition.z

@@ -130,6 +130,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 563171184987608681, guid: eae7cb4b00677f449bba49bb36358062, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 563171184987608681, guid: eae7cb4b00677f449bba49bb36358062, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 563171184987608681, guid: eae7cb4b00677f449bba49bb36358062, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 563171184987608681, guid: eae7cb4b00677f449bba49bb36358062, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 563171184987608681, guid: eae7cb4b00677f449bba49bb36358062, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4290559164
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845413451266418750, guid: eae7cb4b00677f449bba49bb36358062, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845413451266418750, guid: eae7cb4b00677f449bba49bb36358062, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015997829432234330, guid: eae7cb4b00677f449bba49bb36358062, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015997829432234330, guid: eae7cb4b00677f449bba49bb36358062, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9049441205468108416, guid: eae7cb4b00677f449bba49bb36358062, type: 3}
       propertyPath: m_Name
       value: SceneSettings
