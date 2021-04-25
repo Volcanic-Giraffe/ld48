@@ -53,7 +53,7 @@ public class HeroScript : MonoBehaviour
     private float _dx;
     private float _fly;
     private float _legTimer;
-    private SpriteRenderer _sr;
+    private UnityEngine.SpriteRenderer _sr;
     private bool floating;
 
     private bool _died;
@@ -73,7 +73,7 @@ public class HeroScript : MonoBehaviour
     {
         _flyTimer = FlyTime;
         _rigidbody = GetComponent<Rigidbody>();
-        _sr = GetComponentInChildren<SpriteRenderer>();
+        _sr = GetComponentInChildren<UnityEngine.SpriteRenderer>();
         assFlameCube = assFlame.GetComponent<MeshRenderer>();
 
         _ui = FindObjectOfType<MainUI>();
