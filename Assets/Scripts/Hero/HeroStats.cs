@@ -11,6 +11,7 @@ public static class HeroStats
         Peppers = 0;
         ElapsedTime = 0;
         Deaths = 0;
+        HoldingPeppers = 0;
     }
 
 }

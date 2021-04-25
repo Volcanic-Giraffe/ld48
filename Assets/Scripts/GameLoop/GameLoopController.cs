@@ -107,6 +107,7 @@ public class GameLoopController : MonoBehaviour
     public void RestartLevel()
     {
         HeroStats.Deaths += 1;
+        HeroStats.HoldingPeppers = 0;
 
         StartLevel();
 
@@ -143,6 +144,7 @@ public class GameLoopController : MonoBehaviour
     {
         HeroStats.Peppers += HeroStats.HoldingPeppers;
         HeroStats.HoldingPeppers = 0;
+
         _levelIdx++;
         if (_levelIdx < LevelPrefabs.Length)
         {
