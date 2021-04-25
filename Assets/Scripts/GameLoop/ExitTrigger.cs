@@ -21,7 +21,7 @@ public class ExitTrigger : MonoBehaviour
         {
             _exitedOnce = true;
             
-            _sounds.PlayExact("bonus4");
+            _sounds.PlayRandom("oh_yeah");
             
             FindObjectOfType<GameLoopController>().OnExit();
         }
