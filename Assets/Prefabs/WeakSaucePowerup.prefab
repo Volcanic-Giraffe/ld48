@@ -80,6 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7309f01e493018f479b336900d48583f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Week Sauce!
+  Description: Flight time reduced
 --- !u!114 &534855845107088023
 MonoBehaviour:
   m_ObjectHideFlags: 0

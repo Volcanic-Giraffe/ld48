@@ -11,9 +11,6 @@ public class FlyLengthMod : HeroMod
         if (_hero == null) return; // in container
         oldVal = _hero.FlyTime;
         _hero.FlyTime = oldVal * Coefficient;
-
-        var ui = FindObjectOfType<MainUI>();
-        ui.ShowHint("Explosive Boost!");
     }
 
     private void OnDestroy()

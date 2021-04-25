@@ -102,7 +102,7 @@ public class HeroScript : MonoBehaviour
 
     private void Update()
     {
-        if (_died)
+        if (_died || Time.timeScale == 0)
         {
             return;
         }
@@ -199,7 +199,6 @@ public class HeroScript : MonoBehaviour
         groundCollider.height = 0.5f;
 
         _ui.ShowDeadMessage();
-        _ui.ShowHint("press [R] to restart", -1, 3.5f);
     }
 
     private void OnCollisionEnter(Collision collision)

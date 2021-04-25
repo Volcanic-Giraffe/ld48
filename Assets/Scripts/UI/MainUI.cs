@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class MainUI : MonoBehaviour
 {
-    public TextMeshProUGUI centralHint;
-    public TextMeshProUGUI deadText;
+    public TextMeshProUGUI SecondaryText;
+    public TextMeshProUGUI MainText;
     public TextMeshProUGUI roomName;
+    public TextMeshProUGUI PausedText;
     public Slider jetpackMeter;
 
     private HeroScript _hero;
@@ -20,14 +21,16 @@ public class MainUI : MonoBehaviour
 
     private void Reset()
     {
-        centralHint.DOKill();
-        deadText.DOKill();
+        SecondaryText.DOKill();
+        MainText.DOKill();
         
-        centralHint.SetText(string.Empty);
+        SecondaryText.SetText(string.Empty);
         roomName.SetText(string.Empty);
-        deadText.enabled = false;
-        
-        centralHint.color = Color.clear;
+        MainText.enabled = true;
+        SecondaryText.enabled = true;
+
+        MainText.color = Color.clear;
+        SecondaryText.color = Color.clear;
     }
 
     private void Start()
@@ -42,22 +45,34 @@ public class MainUI : MonoBehaviour
     
     public void ShowHint(string text, float hideAfter = 3.0f, float delay = 0f)
     {
-        centralHint.SetText(text);
-        centralHint.color = Color.clear;
-        centralHint.DOColor(Color.white, 0.2f).SetDelay(delay);
-        centralHint.transform.DOPunchScale(Vector3.one * 0.1f,0.3f);
+        SecondaryText.SetText(text);
+        SecondaryText.color = Color.clear;
+        SecondaryText.DOColor(Color.white, 0.2f).SetDelay(delay);
+        SecondaryText.transform.DOPunchScale(Vector3.one * 0.1f,0.3f);
         
         if (hideAfter > 0)
         {
-            centralHint.DOColor(Color.clear, 0.2f).SetDelay(hideAfter + delay);
+            SecondaryText.DOColor(Color.clear, 0.2f).SetDelay(hideAfter + delay);
         }
     }
 
     public void ShowDeadMessage()
     {
-        deadText.enabled = true;
-        deadText.color = Color.clear;
-        deadText.DOColor(Color.white, 0.3f).SetDelay(1f);
+        MainText.color = Color.clear;
+        MainText.DOColor(Color.white, 0.3f).SetDelay(1f);
+        MainText.text = "DEAD";
+
+        ShowHint("press [R] to restart", -1, 3.5f);
+    }
+
+    public void ShowPowerup(string name, string description)
+    {
+        MainText.color = Color.clear;
+        MainText.text = name;
+        MainText.DOColor(Color.white, 0.3f);
+        MainText.DOColor(Color.clear, 0.2f).SetDelay(3);
+
+        ShowHint(description, 3, 0);
     }
 
     public void ShowRoomName(string text)
@@ -65,6 +80,11 @@ public class MainUI : MonoBehaviour
         text ??= string.Empty;
 
         roomName.SetText(text);
+    }
+
+    public void TogglePause(bool val)
+    {
+        PausedText.enabled = val;
     }
 
     private void Update()
