@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
-    private float magnitudeToKill = 3f;
+    private float magnitudeToKill = 1f;
 
     private void OnTriggerEnter(Collider other)
     {

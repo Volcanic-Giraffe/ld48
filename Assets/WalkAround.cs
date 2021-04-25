@@ -57,14 +57,14 @@ public class WalkAround : MonoBehaviour
         Debug.DrawRay(WallCheckLeft.transform.position, -Vector3.right, Color.green);
 #endif
 
-        if (direction > 0 && Physics.Raycast(WallCheckRight.transform.position, Vector3.right, 1f, ~LayerMask.GetMask("Enemy", "Hero", "HeroLegs")))
+        if (direction > 0 && Physics.Raycast(WallCheckRight.transform.position, Vector3.right, 0.6f, ~LayerMask.GetMask("Enemy", "Hero", "HeroLegs")))
         {
             if (_charging) EndCharge();
             direction = -1;
             _sr.flipX = false;
         }
 
-        if (direction < 0 && Physics.Raycast(WallCheckLeft.transform.position, -Vector3.right, 1f, ~LayerMask.GetMask("Enemy", "Hero", "HeroLegs")))
+        if (direction < 0 && Physics.Raycast(WallCheckLeft.transform.position, -Vector3.right, 0.6f, ~LayerMask.GetMask("Enemy", "Hero", "HeroLegs")))
         {
             if (_charging) EndCharge();
             direction = 1;
