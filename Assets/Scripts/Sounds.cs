@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -45,14 +46,22 @@ public class Sounds : MonoBehaviour
 
         var loop = _loopSounds[soundName];
 
-        loop.Play();
+        if (!loop.isPlaying)
+        {
+            loop.Play();
+        }
+
+        loop.DOFade(1, 0.1f);
+
     }
 
     public void StopLoop(string soundName)
     {
         if (_loopSounds.ContainsKey(soundName))
         {
-            _loopSounds[soundName].Stop();
+            _loopSounds[soundName].DOFade(0, 0.1f);
+            
+            // _loopSounds[soundName].Stop(); // stopping causes 'cracking clicks' on some effects
         }
     }
 

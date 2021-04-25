@@ -134,7 +134,7 @@ public class HeroScript : MonoBehaviour
                 assFlame.Play();
                 assFlameCube.enabled = true;
                 
-                _sounds.PlayLoop("jet2_loop");
+                _sounds.PlayLoop("jet2_loop_b");
             }
         }
         else
@@ -142,7 +142,7 @@ public class HeroScript : MonoBehaviour
             assFlame.Stop();
             assFlameCube.enabled = false;
             
-            _sounds.StopLoop("jet2_loop");
+            _sounds.StopLoop("jet2_loop_b");
         }
 
         if (!floating) _flyTimer = FlyTime;
