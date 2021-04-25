@@ -5,6 +5,14 @@ public class ModContainer : MonoBehaviour
 {
     public string Name;
     public string Description;
+    
+    private Sounds _sounds;
+
+    private void Awake()
+    {
+        _sounds = FindObjectOfType<Sounds>();
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -22,6 +30,8 @@ public class ModContainer : MonoBehaviour
             var ui = FindObjectOfType<MainUI>();
             ui.ShowPowerup(Name, Description);
 
+            _sounds.PlayRandom("bonus");
+            
             Destroy(gameObject);
         }
     }

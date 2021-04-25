@@ -13,7 +13,14 @@ public class WalkAround : MonoBehaviour
     public bool Charge = false;
     private bool _charging;
     private SpriteRenderer _sr;
+    
+    private Sounds _sounds;
 
+    private void Awake()
+    {
+        _sounds = FindObjectOfType<Sounds>();
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +48,8 @@ public class WalkAround : MonoBehaviour
         _charging = true;
         if (_anim != null) _anim.FrameDelay /= 3f;
         Speed *= 3;
+        
+        _sounds.PlayRandom("bzenk");
     }
 
     private void EndCharge()
