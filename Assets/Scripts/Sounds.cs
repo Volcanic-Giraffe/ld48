@@ -17,11 +17,14 @@ public class Sounds : MonoBehaviour
     private Dictionary<string, List<AudioClip>> _soundsByPrefix;
     private Dictionary<string, AudioSource> _loopSounds;
 
+    private Dictionary<string, bool> _loopPlaying;
+    
     private void Awake()
     {
         _soundsByPrefix = new Dictionary<string, List<AudioClip>>();
         _soundsByName = new Dictionary<string, AudioClip>();
         _loopSounds = new Dictionary<string, AudioSource>();
+        _loopPlaying = new Dictionary<string, bool>();
 
         foreach (var sound in sounds)
         {
@@ -42,6 +45,7 @@ public class Sounds : MonoBehaviour
             loopAudio.loop = true;
 
             _loopSounds.Add(soundName, loopAudio);
+            _loopPlaying.Add(soundName, false);
         }
 
         var loop = _loopSounds[soundName];
@@ -51,7 +55,11 @@ public class Sounds : MonoBehaviour
             loop.Play();
         }
 
-        loop.DOFade(1, 0.1f);
+        if (!_loopPlaying[soundName])
+        {
+            _loopPlaying[soundName] = true;
+            loop.DOFade(1, 0.1f);
+        }
 
     }
 
@@ -59,8 +67,12 @@ public class Sounds : MonoBehaviour
     {
         if (_loopSounds.ContainsKey(soundName))
         {
-            _loopSounds[soundName].DOFade(0, 0.1f);
-            
+            if (_loopPlaying[soundName])
+            {
+                _loopPlaying[soundName] = false;
+                _loopSounds[soundName].DOFade(0, 0.1f);
+            }
+
             // _loopSounds[soundName].Stop(); // stopping causes 'cracking clicks' on some effects
         }
     }
@@ -70,6 +82,8 @@ public class Sounds : MonoBehaviour
         foreach (var loopSound in _loopSounds)
         {
             loopSound.Value.Stop();
+            loopSound.Value.DOKill();
+            _loopPlaying[loopSound.Key] = false;
         }
     }
 
