@@ -80,9 +80,9 @@ public class GameLoopController : MonoBehaviour
         {
             Destroy(t.gameObject);
         }
-        var _levelPrefab = Instantiate(LevelPrefabs[_levelIdx], transform);
+        var level = Instantiate(LevelPrefabs[_levelIdx], transform);
         var enter = GameObject.FindGameObjectWithTag("Enter");
-        if (enter == null) throw new Exception($"В {_levelPrefab} не найден вход, добавьте объект с тэгом Enter");
+        if (enter == null) throw new Exception($"В {level} не найден вход, добавьте объект с тэгом Enter");
         Hero.transform.position = enter.transform.position - Vector3.up;
         foreach (var cmp in Hero.GetComponents<HeroMod>()) Destroy(cmp);
     }

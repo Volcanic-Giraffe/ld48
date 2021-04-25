@@ -60,8 +60,10 @@ public class MainUI : MonoBehaviour
         deadText.DOColor(Color.white, 0.3f).SetDelay(1f);
     }
 
-    public void SetRoomName(string text)
+    public void ShowRoomName(string text)
     {
+        text ??= string.Empty;
+
         roomName.SetText(text);
     }
 
