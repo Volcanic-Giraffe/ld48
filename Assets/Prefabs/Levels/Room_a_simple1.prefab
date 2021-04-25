@@ -2971,7 +2971,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3288161168479339002, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: roomName
-      value: They see
+      value: Intro
       objectReference: {fileID: 0}
     - target: {fileID: 7702025329033683098, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3025,7 +3025,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomBase
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9165497339289386431, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.24
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 556328778323396665, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
 --- !u!4 &6651568628501882892 stripped
 Transform:

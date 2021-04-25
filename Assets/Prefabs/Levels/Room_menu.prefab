@@ -883,7 +883,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 2.29, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 15.793762, y: 11.345362, z: 5.4820385}
+  m_ConnectedAnchor: {x: 15.988005, y: 11.3401, z: 5.4820385}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -3058,7 +3058,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 2.3999999, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 19.233763, y: 11.907721, z: 5.4820385}
+  m_ConnectedAnchor: {x: 19.4269, y: 11.902758, z: 5.4820385}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -3257,7 +3257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3288161168479339002, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: roomName
-      value: Right order
+      value: The outer world
       objectReference: {fileID: 0}
     - target: {fileID: 6847533915850857328, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: m_IsActive
