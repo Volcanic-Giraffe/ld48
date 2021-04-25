@@ -19,11 +19,14 @@ public class ExitTrigger : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            _exitedOnce = true;
-            
-            _sounds.PlayExact("bonus4");
-            
-            FindObjectOfType<GameLoopController>().OnExit();
+            var player = other.gameObject.GetComponent<HeroScript>();
+
+            if (!player.Died)
+            {
+                _exitedOnce = true;
+                _sounds.PlayRandom("laugh");
+                FindObjectOfType<GameLoopController>().OnExit();    
+            }
         }
     }
 }

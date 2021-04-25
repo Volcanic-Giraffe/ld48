@@ -20,8 +20,11 @@ public class GameLoopController : MonoBehaviour
 
     private bool _speedUpRequested;
     
+    private Sounds _sounds;
+
     private void Awake()
     {
+        _sounds = FindObjectOfType<Sounds>();
     }
 
     private void Start()
@@ -106,6 +109,8 @@ public class GameLoopController : MonoBehaviour
 
     public void RestartLevel()
     {
+        _sounds.PlayRandom("double_click");
+        
         HeroStats.Deaths += 1;
         HeroStats.HoldingPeppers = 0;
 

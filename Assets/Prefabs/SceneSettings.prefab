@@ -1149,6 +1149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aSource: {fileID: 514417728273475056}
+  loopPlayerGO: {fileID: 8723716139684751565, guid: 49e32d68e9b8a6a41839034d6e180366, type: 3}
   sounds:
   - {fileID: 8300000, guid: bbe654d38224a4b4e9c8d98f2ecda53c, type: 3}
   - {fileID: 8300000, guid: d6024d432b5f39a42977d6de2e92505f, type: 3}
@@ -1219,6 +1220,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5ee48aed30d241f4ca7b549ef1a2240b, type: 3}
   - {fileID: 8300000, guid: f4deafea122e5ee4a97e1571403fc0b2, type: 3}
   - {fileID: 8300000, guid: 92f34b69b647bfc4792f98d59fcc4b40, type: 3}
+  - {fileID: 8300000, guid: 9584d11fcf04b8e4897b470b58bcb5d1, type: 3}
+  - {fileID: 8300000, guid: 937d4c3df9423734d88a9304e74a60aa, type: 3}
+  - {fileID: 8300000, guid: ecdcee3a4afa83e41ac970039e9a4d38, type: 3}
+  - {fileID: 8300000, guid: 1b6551c08bf8c364b959c556caf6bc9f, type: 3}
 --- !u!1 &8658586313365314953
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,6 +59,8 @@ public class HeroScript : MonoBehaviour
 
     private bool _died;
 
+    private bool _jetJustEnded;
+    
     private GameLoopController _game;
     private MainUI _ui;
     private Sounds _sounds;
@@ -133,12 +135,28 @@ public class HeroScript : MonoBehaviour
             {
                 assFlame.Play();
                 assFlameCube.enabled = true;
+                
+                _sounds.PlayLoop("jet2_loop_b");
+                _jetJustEnded = true;
             }
         }
         else
         {
             assFlame.Stop();
             assFlameCube.enabled = false;
+            
+            _sounds.StopLoop("jet2_loop_b");
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                _sounds.PlayRandom("fart");
+            }
+            
+            if (_fly != 0 && _jetJustEnded)
+            {
+                _jetJustEnded = false;
+                _sounds.PlayExact("jet2_end");
+            }
         }
 
         if (!floating) _flyTimer = FlyTime;
@@ -202,6 +220,8 @@ public class HeroScript : MonoBehaviour
         if (_died) return;
         _died = true;
 
+        _sounds.PlayRandom("grunt");
+        
         _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
                                  RigidbodyConstraints.FreezePositionZ;
 
