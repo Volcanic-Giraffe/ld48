@@ -241,9 +241,14 @@ public class HeroScript : MonoBehaviour
             DieHero();
         }
 
-        if (collision.impulse.magnitude > 1f)
+        
+        if (collision.impulse.magnitude > 5f)
         {
             _sounds.PlayRandom("pillow_");            
+        }
+        else if (collision.impulse.magnitude > 2f)
+        {
+            _sounds.PlayRandom("weak_thump");            
         }
     }
 }
