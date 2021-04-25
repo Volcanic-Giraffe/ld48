@@ -11,6 +11,7 @@ public class FlyStrengthMod : HeroMod
         if (_hero == null) return; // in container
         oldVal = _hero.FlyPower;
         _hero.FlyPower = oldVal * Coefficient;
+        _hero.ResetFuel();
     }
 
     private void OnDestroy()

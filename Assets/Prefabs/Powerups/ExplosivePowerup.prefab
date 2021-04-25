@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80501d28fedaec640a3450311aaa1245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 0.1
+  Coefficient: 0.05
 --- !u!114 &-992710084935095313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3889c8bb8cd7e314f985ed442516de06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 6
 --- !u!114 &2137770270054903148
 MonoBehaviour:
   m_ObjectHideFlags: 0

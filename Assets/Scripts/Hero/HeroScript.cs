@@ -13,6 +13,7 @@ public class HeroScript : MonoBehaviour
     public float FlyPower = 1;
     [Tooltip("Время, на которое хватает запаса топлива в жопе")]
     public float FlyTime = 1;
+
     private float _flyTimer;
     [Tooltip("Абсолютное ограничение скорости при ходьбе")]
     public float WalkSpeedLimit = 3;
@@ -101,6 +102,11 @@ public class HeroScript : MonoBehaviour
 
 
         _died = false;
+    }
+
+    internal void ResetFuel()
+    {
+        _flyTimer = FlyTime;
     }
 
     private void Update()
