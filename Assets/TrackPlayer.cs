@@ -12,6 +12,7 @@ public class TrackPlayer : MonoBehaviour
     private Vector3 startPos;
     private GameObject hero;
     public bool LookAt;
+    public float AtMaxDistance = 0;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class TrackPlayer : MonoBehaviour
     void Update()
     {
         Vector3 vc;
+        if (AtMaxDistance != 0 && Vector3.Distance(hero.transform.position, transform.position) > AtMaxDistance) return;
         switch (TrackBehaviour)
         {
             case TrackBehaviour.LocalPos:
@@ -45,6 +47,6 @@ public class TrackPlayer : MonoBehaviour
                 if (LookAt) transform.up = vc;
                 break;
         }
-        
+
     }
 }
