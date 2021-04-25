@@ -57,6 +57,7 @@ public class HeroScript : MonoBehaviour
 
     private bool _died;
 
+    private GameLoopController _game;
     private MainUI _ui;
 
     private Quaternion _originalRotation;
@@ -75,6 +76,7 @@ public class HeroScript : MonoBehaviour
         assFlameCube = assFlame.GetComponent<MeshRenderer>();
 
         _ui = FindObjectOfType<MainUI>();
+        _game = FindObjectOfType<GameLoopController>();
 
         _originalRotation = transform.rotation;
         _originalGroundColliderHeight = groundCollider.height;
@@ -199,6 +201,7 @@ public class HeroScript : MonoBehaviour
         groundCollider.height = 0.5f;
 
         _ui.ShowDeadMessage();
+        _game.SlowDown();
     }
 
     private void OnCollisionEnter(Collision collision)

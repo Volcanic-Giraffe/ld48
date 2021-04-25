@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,12 @@ public class GameLoopController : MonoBehaviour
     private float _restartCooldown;
 
     private bool _paused;
+
+    private bool _speedUpRequested;
+    
+    private void Awake()
+    {
+    }
 
     private void Start()
     {
@@ -65,20 +72,43 @@ public class GameLoopController : MonoBehaviour
 
     public void PauseLevel()
     {
+        _speedUpRequested = false;
         _paused = true;
         Time.timeScale = 0;
     }
 
     public void UnpauseLevel()
     {
+        _speedUpRequested = false;
         _paused = false;
         Time.timeScale = 1f;
+    }
+
+    public void SlowDown(float delay = 3f)
+    {
+        Time.timeScale = 0.5f;
+        _speedUpRequested = true;
+        StartCoroutine(SpeedUp(delay));
+    }
+
+    private IEnumerator SpeedUp(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+
+        if (_speedUpRequested)
+        {
+            _speedUpRequested = false;
+            Time.timeScale = 1f;
+        }
     }
 
     public void RestartLevel()
     {
         StartLevel();
 
+        _speedUpRequested = false;
+        Time.timeScale = 1f;
+        
         var hero = FindObjectOfType<HeroScript>();
         hero.OnLevelRestart();
 
