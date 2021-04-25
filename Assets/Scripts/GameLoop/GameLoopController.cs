@@ -15,6 +15,8 @@ public class GameLoopController : MonoBehaviour
 
     private float _restartCooldown;
     
+    private bool _paused;
+
     private void Start()
     {
         Hero = GameObject.FindGameObjectWithTag("Player");
@@ -30,8 +32,37 @@ public class GameLoopController : MonoBehaviour
             _restartCooldown = RestartCooldown;
             RestartLevel();
         }
+        
+        if (Input.GetButtonDown("Level Pause"))
+        {
+            TogglePause();
+        }
     }
 
+    public void TogglePause()
+    {
+        if (_paused)
+        {
+            UnpauseLevel();
+        }
+        else
+        {
+            PauseLevel();
+        }
+    }
+    
+    public void PauseLevel()
+    {
+        _paused = true;
+        Time.timeScale = 0;
+    }
+
+    public void UnpauseLevel()
+    {
+        _paused = false;
+        Time.timeScale = 1f;
+    }
+    
     public void RestartLevel()
     {
         StartLevel();
