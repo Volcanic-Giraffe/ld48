@@ -18,6 +18,7 @@ public class HeroScript : MonoBehaviour
     public float WalkSpeedLimit = 3;
     [Tooltip("Партиклер жопы")]
     public ParticleSystem assFlame;
+    public ParticleSystem deathEffect;
     
     [Space]
     [Header("Legs:")]
@@ -202,6 +203,8 @@ public class HeroScript : MonoBehaviour
 
         _ui.ShowDeadMessage();
         _game.SlowDown();
+
+        deathEffect.Play();
     }
 
     private void OnCollisionEnter(Collision collision)
