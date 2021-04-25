@@ -10,6 +10,8 @@ public class MainUI : MonoBehaviour
     public TextMeshProUGUI MainText;
     public TextMeshProUGUI roomName;
     public TextMeshProUGUI PausedText;
+    public TextMeshProUGUI TimeText;
+    public TextMeshProUGUI Peppers;
     public Slider jetpackMeter;
 
     private HeroScript _hero;
@@ -23,7 +25,7 @@ public class MainUI : MonoBehaviour
     {
         SecondaryText.DOKill();
         MainText.DOKill();
-        
+
         SecondaryText.SetText(string.Empty);
         roomName.SetText(string.Empty);
         MainText.enabled = true;
@@ -42,14 +44,14 @@ public class MainUI : MonoBehaviour
     {
         Reset();
     }
-    
+
     public void ShowHint(string text, float hideAfter = 3.0f, float delay = 0f)
     {
         SecondaryText.SetText(text);
         SecondaryText.color = Color.clear;
         SecondaryText.DOColor(Color.white, 0.2f).SetDelay(delay);
-        SecondaryText.transform.DOPunchScale(Vector3.one * 0.1f,0.3f);
-        
+        SecondaryText.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f);
+
         if (hideAfter > 0)
         {
             SecondaryText.DOColor(Color.clear, 0.2f).SetDelay(hideAfter + delay);
@@ -90,6 +92,8 @@ public class MainUI : MonoBehaviour
     private void Update()
     {
         UpdateJetPack();
+        TimeText.text = $"{HeroStats.ElapsedTime / 60: 00} : {HeroStats.ElapsedTime : 00}";
+        Peppers.text = (HeroStats.Peppers + HeroStats.HoldingPeppers).ToString();
     }
 
     private void UpdateJetPack()

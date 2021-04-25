@@ -26,6 +26,7 @@ public class GameLoopController : MonoBehaviour
 
     private void Start()
     {
+        HeroStats.Reset();
         Hero = GameObject.FindGameObjectWithTag("Player");
         _ui = FindObjectOfType<MainUI>();
         StartLevel();
@@ -33,6 +34,7 @@ public class GameLoopController : MonoBehaviour
 
     private void Update()
     {
+        HeroStats.ElapsedTime += Time.deltaTime;
         if (_restartCooldown >= 0) _restartCooldown -= Time.deltaTime;
 
         if (Input.GetButtonDown("Level Restart") && _restartCooldown <= 0)
@@ -104,6 +106,8 @@ public class GameLoopController : MonoBehaviour
 
     public void RestartLevel()
     {
+        HeroStats.Deaths += 1;
+
         StartLevel();
 
         _speedUpRequested = false;
@@ -137,6 +141,8 @@ public class GameLoopController : MonoBehaviour
 
     private void NextLevel()
     {
+        HeroStats.Peppers += HeroStats.HoldingPeppers;
+        HeroStats.HoldingPeppers = 0;
         _levelIdx++;
         if (_levelIdx < LevelPrefabs.Length)
         {

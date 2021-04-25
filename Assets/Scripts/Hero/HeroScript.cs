@@ -69,7 +69,6 @@ public class HeroScript : MonoBehaviour
     public float RemainingFly => FlyTime > 0 ? _flyTimer / FlyTime : 1f;
 
     public bool Died => _died;
-
     private void Awake()
     {
         _flyTimer = FlyTime;
