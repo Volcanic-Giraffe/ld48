@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8650677175535244881}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallCheckR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6178200210264342952}
   - component: {fileID: 7979795032317675068}
   - component: {fileID: 19700421529963471}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: enemy2_hand_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 1009632243650628565}
   - component: {fileID: 6606175352754422034}
   - component: {fileID: 7006671534929035378}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 8190816044724136047}
   - component: {fileID: 6743497123221534040}
   - component: {fileID: 4144019569142038774}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: enemy2_hand_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5340510685299050632}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallCheckL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5155353681051986607}
   - component: {fileID: 8441694804675914681}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 2835893122086655107}
   - component: {fileID: 3232687548824617128}
   - component: {fileID: 8044517869469187625}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,3 +629,4 @@ MonoBehaviour:
   Speed: 1
   WallCheckRight: {fileID: 5079559531960649668}
   WallCheckLeft: {fileID: 8550262301664046242}
+  Charge: 0
