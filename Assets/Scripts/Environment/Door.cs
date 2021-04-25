@@ -1,5 +1,6 @@
 ﻿
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -12,16 +13,23 @@ public class Door : MonoBehaviour
         _initialPos = transform.position;
     }
 
+    public void TriggerMove(float mv)
+    {
+        if (!DOTween.IsTweening(transform))
+        {
+            transform.position = Vector3.Lerp(_initialPos, _initialPos + OpenDirection, mv);
+        }
+    }
+
     public void Trigger(bool opened)
     {
         if (opened)
         {
-            //todo: animate
-            transform.position = _initialPos + OpenDirection;
+            transform.DOMove(_initialPos + OpenDirection, 1f);
         }
         else
         {
-            transform.position = _initialPos;
+            transform.DOMove(_initialPos, 1f);
         }
     }
 }

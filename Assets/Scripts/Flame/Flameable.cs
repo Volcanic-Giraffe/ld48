@@ -17,6 +17,18 @@ public class Flameable : MonoBehaviour
 
     private float _initialRate;
 
+    public bool IsBurning => _isBurning;
+
+    public float Progress
+    {
+        get
+        {
+            if (!_isBurning) return 0;
+            if (DecreaseFireWithTime) return (1 - (Time.time - _whenStartedToFire) / SecondsToFire);
+            return 1;
+        }
+    }
+
     private void Awake()
     {
         
