@@ -1,12 +1,11 @@
-﻿
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameLoopController : MonoBehaviour
 {
     private const float RestartCooldown = 1f;
-    
+
     private GameObject Hero;
     public GameObject[] LevelPrefabs;
 
@@ -14,7 +13,7 @@ public class GameLoopController : MonoBehaviour
     private int _levelIdx = 0;
 
     private float _restartCooldown;
-    
+
     private bool _paused;
 
     private void Start()
@@ -32,10 +31,20 @@ public class GameLoopController : MonoBehaviour
             _restartCooldown = RestartCooldown;
             RestartLevel();
         }
-        
+
         if (Input.GetButtonDown("Level Pause"))
         {
             TogglePause();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftBracket))
+        {
+            PrevLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightBracket))
+        {
+            NextLevel();
         }
     }
 
@@ -50,7 +59,7 @@ public class GameLoopController : MonoBehaviour
             PauseLevel();
         }
     }
-    
+
     public void PauseLevel()
     {
         _paused = true;
@@ -62,7 +71,7 @@ public class GameLoopController : MonoBehaviour
         _paused = false;
         Time.timeScale = 1f;
     }
-    
+
     public void RestartLevel()
     {
         StartLevel();
@@ -80,6 +89,7 @@ public class GameLoopController : MonoBehaviour
         {
             Destroy(t.gameObject);
         }
+
         var level = Instantiate(LevelPrefabs[_levelIdx], transform);
         var enter = GameObject.FindGameObjectWithTag("Enter");
         if (enter == null) throw new Exception($"В {level} не найден вход, добавьте объект с тэгом Enter");
@@ -88,6 +98,11 @@ public class GameLoopController : MonoBehaviour
     }
 
     public void OnExit()
+    {
+        NextLevel();
+    }
+
+    private void NextLevel()
     {
         _levelIdx++;
         if (_levelIdx < LevelPrefabs.Length)
@@ -98,6 +113,15 @@ public class GameLoopController : MonoBehaviour
         {
             Destroy(gameObject);
             SceneManager.LoadScene("GameOverScene");
+        }
+    }
+
+    private void PrevLevel()
+    {
+        _levelIdx--;
+        if (_levelIdx >= 0)
+        {
+            StartLevel();
         }
     }
 }
