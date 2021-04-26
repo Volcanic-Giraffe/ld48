@@ -311,6 +311,7 @@ public class HeroScript : MonoBehaviour
     {
         if (_died) return;
         _died = true;
+        HeroStats.Deaths += 1;
         _musician?.OnHeroDie();
 
         _sounds.PlayRandom("grunt");
