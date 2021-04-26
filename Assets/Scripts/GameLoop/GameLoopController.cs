@@ -35,7 +35,8 @@ public class GameLoopController : MonoBehaviour
 
     private void Update()
     {
-        HeroStats.ElapsedTime += Time.deltaTime;
+        if (_levelIdx < LevelPrefabs.Length - 1)
+            HeroStats.ElapsedTime += Time.deltaTime;
         if (_restartCooldown >= 0) _restartCooldown -= Time.deltaTime;
 
         if (Input.GetButtonDown("Level Restart") && _restartCooldown <= 0)
@@ -112,8 +113,7 @@ public class GameLoopController : MonoBehaviour
     public void RestartLevel()
     {
         _sounds.PlayRandom("double_click");
-
-        HeroStats.Deaths += 1;
+        if (_levelIdx < LevelPrefabs.Length - 1) HeroStats.Deaths += 1;
         HeroStats.HoldingPeppers = 0;
 
         StartLevel();
@@ -145,7 +145,7 @@ public class GameLoopController : MonoBehaviour
         var level = Instantiate(LevelPrefabs[_levelIdx], transform);
         var enter = GameObject.FindGameObjectWithTag("Enter");
         if (enter == null) throw new Exception($"В {level} не найден вход, добавьте объект с тэгом Enter");
-        
+
         var hero = FindObjectOfType<HeroScript>();
         hero.OnLevelEnter();
         hero.transform.position = enter.transform.position - Vector3.up;
@@ -159,7 +159,7 @@ public class GameLoopController : MonoBehaviour
     private void NextLevel()
     {
         _sounds.StopAllLoops();
-        
+
         HeroStats.Peppers += HeroStats.HoldingPeppers;
         HeroStats.HoldingPeppers = 0;
 
@@ -178,7 +178,7 @@ public class GameLoopController : MonoBehaviour
     private void PrevLevel()
     {
         _sounds.StopAllLoops();
-        
+
         _levelIdx--;
         if (_levelIdx >= 0)
         {

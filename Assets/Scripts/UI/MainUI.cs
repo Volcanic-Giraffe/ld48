@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -14,11 +15,21 @@ public class MainUI : MonoBehaviour
     public TextMeshProUGUI Peppers;
     public Slider jetpackMeter;
 
+
+    public TextMeshProUGUI ResultTimeText;
+    public TextMeshProUGUI ResultDeathText;
+    public TextMeshProUGUI ResultPeppersText;
+    public TextMeshProUGUI ResultTimeVal;
+    public TextMeshProUGUI ResultDeathVal;
+    public TextMeshProUGUI ResultPeppersVal;
+
     private HeroScript _hero;
+    private Sounds _sounds;
 
     private void Awake()
     {
         Reset();
+        _sounds = FindObjectOfType<Sounds>();
     }
 
     private void Reset()
@@ -33,6 +44,13 @@ public class MainUI : MonoBehaviour
 
         MainText.color = Color.clear;
         SecondaryText.color = Color.clear;
+
+        ResultTimeText.enabled = false;
+        ResultDeathText.enabled = false;
+        ResultPeppersText.enabled = false;
+        ResultTimeVal.enabled = false;
+        ResultDeathVal.enabled = false;
+        ResultPeppersVal.enabled = false;
     }
 
     private void Start()
@@ -92,7 +110,7 @@ public class MainUI : MonoBehaviour
     private void Update()
     {
         UpdateJetPack();
-        TimeText.text = $"{HeroStats.ElapsedTime / 60:00}:{HeroStats.ElapsedTime % 60 :00}";
+        TimeText.text = $"{HeroStats.ElapsedTime / 60:00}:{HeroStats.ElapsedTime % 60:00}";
         Peppers.text = (HeroStats.Peppers + HeroStats.HoldingPeppers).ToString();
     }
 
@@ -101,5 +119,44 @@ public class MainUI : MonoBehaviour
         if (_hero == null) return;
 
         jetpackMeter.value = _hero.RemainingFly;
+    }
+
+    public Coroutine ShowResults()
+    {
+        return StartCoroutine(ShowResultsCR());
+    }
+
+    private IEnumerator ShowResultsCR()
+    {
+        var wait = 0.4f;
+
+        ResultTimeText.enabled = true;
+        _sounds.PlayExact("slap2");
+        yield return new WaitForSeconds(wait);
+
+        ResultTimeVal.enabled = true;
+        ResultTimeVal.text = $"{HeroStats.ElapsedTime / 60:00}:{HeroStats.ElapsedTime % 60:00}";
+        _sounds.PlayExact("slap2");
+        yield return new WaitForSeconds(wait);
+
+
+        ResultDeathText.enabled = true;
+        _sounds.PlayExact("slap2");
+        yield return new WaitForSeconds(wait);
+
+        ResultDeathVal.enabled = true;
+        ResultDeathVal.text = HeroStats.Deaths.ToString();
+        _sounds.PlayExact("slap2");
+        yield return new WaitForSeconds(wait);
+
+
+        ResultPeppersText.enabled = true;
+        _sounds.PlayExact("slap2");
+        yield return new WaitForSeconds(wait);
+
+        ResultPeppersVal.enabled = true;
+        ResultPeppersVal.text = HeroStats.Peppers.ToString();
+        _sounds.PlayExact("slap2");
+        yield return new WaitForSeconds(wait);
     }
 }

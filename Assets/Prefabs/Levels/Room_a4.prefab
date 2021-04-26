@@ -35630,11 +35630,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1447256388019727259, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
       propertyPath: radius
-      value: 20
+      value: 11.57
       objectReference: {fileID: 0}
     - target: {fileID: 1447256388019727259, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
       propertyPath: loopSound
-      value: weird4
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447256388019727259, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
+      propertyPath: randomSound
+      value: weird
       objectReference: {fileID: 0}
     - target: {fileID: 3120217288287252576, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
       propertyPath: m_Name
@@ -35646,11 +35650,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6853184180788502668, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.2
+      value: 5.33
       objectReference: {fileID: 0}
     - target: {fileID: 6853184180788502668, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.6
+      value: 17.42
       objectReference: {fileID: 0}
     - target: {fileID: 6853184180788502668, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
       propertyPath: m_LocalPosition.z

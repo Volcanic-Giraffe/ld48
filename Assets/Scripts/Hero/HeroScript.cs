@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroScript : MonoBehaviour
@@ -50,11 +51,20 @@ public class HeroScript : MonoBehaviour
     public bool ragdollOnDeath;
     private bool _ignoreFallDamage;
 
+
+    public GameObject RewardTopHat;
+    public GameObject RewardCrown;
+    public GameObject RewardBoot1;
+    public GameObject RewardBoot2;
+    public GameObject RewardScarf;
+
+
     MeshRenderer assFlameCube;
     private float _dx;
     private float _fly;
     private float _legTimer;
     private UnityEngine.SpriteRenderer _sr;
+
     private bool floating;
 
     private bool _died;
@@ -286,6 +296,39 @@ public class HeroScript : MonoBehaviour
         else if (collision.impulse.magnitude > 2f)
         {
             _sounds.PlayRandom("weak_thump");            
+        }
+    }
+
+    public void Reward(List<Rewards> rewards)
+    {
+        foreach (var reward in rewards)
+        {
+            ApplyReward(reward);
+        }
+    }
+
+    void ApplyReward(Rewards reward)
+    {
+        // todo 
+        return;
+        if(!HeroStats.ExistingRewards.Contains(reward))
+        {
+            switch(reward)
+            {
+                case Rewards.TopHat:
+                    RewardTopHat.SetActive(true);
+                    break;
+                case Rewards.FireScarf:
+                    RewardScarf.SetActive(true);
+                    break;
+                case Rewards.RedBoots:
+                    RewardBoot1.SetActive(true);
+                    RewardBoot2.SetActive(true);
+                    break;
+                case Rewards.Crown:
+                    RewardCrown.SetActive(true);
+                    break;
+            }
         }
     }
 }
