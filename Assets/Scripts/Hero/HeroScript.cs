@@ -228,7 +228,7 @@ public class HeroScript : MonoBehaviour
             if (TorsoSR.flipX == true)
             {
                 RewardCrown.transform.localPosition = new Vector3(-0.057f, 0.93f, 0);
-                RewardCrown.transform.localRotation = Quaternion.Euler(new Vector3(0,0,32));
+                RewardCrown.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 32));
                 RewardTopHat.transform.localPosition = new Vector3(-0.05f, 0.91f, 0);
                 RewardTopHat.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 32));
             }
@@ -365,18 +365,27 @@ public class HeroScript : MonoBehaviour
         switch (reward)
         {
             case Rewards.TopHat:
+                // награда за первое прохождение. Незаметно облегчает жизнь
                 RewardTopHat.SetActive(true);
+                fallDamageMagnitude *= 1.1f;
+                FlyTime *= 1.05f;
                 break;
             case Rewards.FireScarf:
+                // награда за бессмертное прохождение. Немного, но ощущается.
                 RewardScarf.SetActive(true);
                 FlyTime *= 1.1f;
                 break;
             case Rewards.RedBoots:
+                // награда за 8 мин. x1.4 = почти полный иммун, а так норм, еще можно умереть.
                 RewardBoot1.SetActive(true);
                 RewardBoot2.SetActive(true);
+                fallDamageMagnitude *= 1.25f;
                 break;
             case Rewards.Crown:
+                // награда за все перцы. Почти не чувствуется, но я хз что еще баффнуть.
                 RewardCrown.SetActive(true);
+                WalkSpeedLimit *= 1.3f;
+                Acceleration *= 1.1f;
                 break;
         }
     }
