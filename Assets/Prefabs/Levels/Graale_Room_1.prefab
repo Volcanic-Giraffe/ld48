@@ -46,7 +46,7 @@ MonoBehaviour:
   Prefabs:
   - {fileID: 5516730466147293676, guid: c84d73c7cfc4fe64a996f6f14444e83f, type: 3}
   - {fileID: 5516730466147293676, guid: 9c128178139d92f40a589d9146b7c816, type: 3}
-  ItemsPerMinute: 4000
+  ItemsPerMinute: 1000
   Randomize: 0.5
   Intensity: 0.1
 --- !u!1 &2077967303340555216
@@ -4816,7 +4816,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6085705019041753202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.43, y: -4.39, z: 0}
+  m_LocalPosition: {x: 17.43, y: -3.273, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6241330125718129127}
@@ -5604,14 +5604,6 @@ PrefabInstance:
     - target: {fileID: 7724971706533982367, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: m_LocalPosition.y
       value: -4.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310613164646522668, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
-      propertyPath: m_Size.x
-      value: 0.6898126
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310613164646522668, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
-      propertyPath: m_Center.x
-      value: -0.1550939
       objectReference: {fileID: 0}
     - target: {fileID: 8310613164660376981, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: m_RootOrder

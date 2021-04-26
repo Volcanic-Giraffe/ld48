@@ -8,7 +8,9 @@ public class MeshConsumer : MonoBehaviour
     {
         if (other.CompareTag(this.tag))
         {
-            Destroy(other.gameObject);
+            // so it can fall through the ground and die there
+            other.enabled = false;
+            Destroy(other.gameObject,1f);
         }
     }
 }
