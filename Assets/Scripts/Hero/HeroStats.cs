@@ -4,7 +4,7 @@ using UnityEngine;
 public static class HeroStats
 {
     // Сколько всего перцев (я не придумал, как получить программно)
-    public const int TotalPeppers = 10;
+    public const int TotalPeppers = 15;
 
     // Что считается спидраном
     public const int SuperTimePar = 8 * 60;
