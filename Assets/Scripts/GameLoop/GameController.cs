@@ -61,6 +61,11 @@ public class GameController : MonoBehaviour
         {
             NextLevel();
         }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Application.Quit();
+        }
     }
 
     public void RestartLevel()
