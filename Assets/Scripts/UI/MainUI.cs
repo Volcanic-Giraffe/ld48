@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class MainUI : MonoBehaviour
 {
+    public Image overlay;
+    [Space]
     public TextMeshProUGUI SecondaryText;
     public TextMeshProUGUI MainText;
     public TextMeshProUGUI roomName;
@@ -15,13 +17,17 @@ public class MainUI : MonoBehaviour
     public TextMeshProUGUI Peppers;
     public Slider jetpackMeter;
 
-
+    [Space]
     public TextMeshProUGUI ResultTimeText;
     public TextMeshProUGUI ResultDeathText;
     public TextMeshProUGUI ResultPeppersText;
     public TextMeshProUGUI ResultTimeVal;
     public TextMeshProUGUI ResultDeathVal;
     public TextMeshProUGUI ResultPeppersVal;
+
+    public Image TimeStar;
+    public Image DeathStar;
+    public Image PeppersStar;
 
     private HeroScript _hero;
     private Sounds _sounds;
@@ -30,11 +36,12 @@ public class MainUI : MonoBehaviour
     {
         Reset();
         _sounds = FindObjectOfType<Sounds>();
-        _hero = FindObjectOfType<HeroScript>();
     }
 
-    private void Reset()
+    public void Reset()
     {
+        _hero = FindObjectOfType<HeroScript>();
+        
         SecondaryText.DOKill();
         MainText.DOKill();
 
@@ -52,6 +59,10 @@ public class MainUI : MonoBehaviour
         ResultTimeVal.enabled = false;
         ResultDeathVal.enabled = false;
         ResultPeppersVal.enabled = false;
+
+        TimeStar.enabled = false;
+        DeathStar.enabled = false;
+        PeppersStar.enabled = false;
     }
 
     public void OnLevelChange()
@@ -93,9 +104,11 @@ public class MainUI : MonoBehaviour
 
     public void ShowRoomName(string text)
     {
+        var col = roomName.color;
+        roomName.color = Color.clear;
         text ??= string.Empty;
-
-        roomName.SetText(text);
+        roomName.text = text;
+        roomName.DOColor(col, 1f);
     }
 
     public void TogglePause(bool val)
@@ -135,6 +148,13 @@ public class MainUI : MonoBehaviour
         _sounds.PlayExact("slap2");
         yield return new WaitForSeconds(wait);
 
+        if (HeroStats.ElapsedTime <= HeroStats.SuperTimePar)
+        {
+            TimeStar.enabled = true;
+            _sounds.PlayExact("can2");
+            yield return new WaitForSeconds(wait);
+        }
+
 
         ResultDeathText.enabled = true;
         _sounds.PlayExact("slap2");
@@ -145,6 +165,13 @@ public class MainUI : MonoBehaviour
         _sounds.PlayExact("slap2");
         yield return new WaitForSeconds(wait);
 
+        if (HeroStats.Deaths == 0)
+        {
+            DeathStar.enabled = true;
+            _sounds.PlayExact("can2");
+            yield return new WaitForSeconds(wait);
+        }
+
 
         ResultPeppersText.enabled = true;
         _sounds.PlayExact("slap2");
@@ -154,5 +181,27 @@ public class MainUI : MonoBehaviour
         ResultPeppersVal.text = HeroStats.Peppers.ToString();
         _sounds.PlayExact("slap2");
         yield return new WaitForSeconds(wait);
+
+        if (HeroStats.Peppers >= HeroStats.TotalPeppers)
+        {
+            PeppersStar.enabled = true;
+            _sounds.PlayExact("can2");
+            yield return new WaitForSeconds(wait);
+        }
+    }
+
+    public void FadeOut(Action callback)
+    {
+        overlay.DOKill();
+        overlay.DOFade(1, 0.1f).onComplete = () =>
+        {
+            callback?.Invoke();
+        };
+    }
+
+    public void FadeIn()
+    {
+        overlay.DOKill();
+        overlay.DOFade(0, 0.3f);
     }
 }

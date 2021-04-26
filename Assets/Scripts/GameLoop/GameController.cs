@@ -11,16 +11,18 @@ public class GameController : MonoBehaviour
     private int _currentScene = 0;
 
     private float _restartCooldown;
-    
+
     private bool _speedUpRequested;
     private bool _paused;
 
     private Sounds _sounds;
     private MainUI _ui;
     
+    private AsyncOperation _loading;
+
     private void Awake()
     {
-        _sounds = FindObjectOfType<Sounds>(); 
+        _sounds = FindObjectOfType<Sounds>();
         _ui = FindObjectOfType<MainUI>();
 
         DontDestroyOnLoad(gameObject);
@@ -34,8 +36,9 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        if (_currentScene < SceneManager.sceneCountInBuildSettings - 1)
         HeroStats.ElapsedTime += Time.deltaTime;
-        
+
         if (_restartCooldown >= 0) _restartCooldown -= Time.deltaTime;
 
         if (Input.GetButtonDown("Level Restart") && _restartCooldown <= 0)
@@ -48,7 +51,7 @@ public class GameController : MonoBehaviour
         {
             TogglePause();
         }
-        
+
         if (Input.GetKeyDown(KeyCode.LeftBracket))
         {
             PrevLevel();
@@ -61,18 +64,18 @@ public class GameController : MonoBehaviour
     }
 
     public void RestartLevel()
-    {       
+    {
         _sounds.PlayRandom("double_click");
 
-        HeroStats.Deaths += 1;
+        if (_currentScene < SceneManager.sceneCountInBuildSettings - 1)
+            HeroStats.Deaths += 1;
         HeroStats.HoldingPeppers = 0;
-        
+
         Time.timeScale = 1f;
-        
+
         _speedUpRequested = false;
-        
-        SceneManager.LoadScene(_currentScene);
-        OnLevelLoaded();
+
+        LoadScene(_currentScene);
     }
     public void TogglePause()
     {
@@ -121,41 +124,55 @@ public class GameController : MonoBehaviour
     }
     public void PrevLevel()
     {
-        _sounds.StopAllLoops();
-        
         _currentScene -= 1;
         if (_currentScene < 1) _currentScene = 1; // do not load starter scene
 
-        SceneManager.LoadScene(_currentScene);
-        OnLevelLoaded();
+        LoadScene(_currentScene);
     }
 
     public void NextLevel()
     {
         if (_currentScene > 0)
         {
-            _sounds.StopAllLoops();
             HeroStats.Peppers += HeroStats.HoldingPeppers;
             HeroStats.HoldingPeppers = 0;
-
         }
         
         _currentScene += 1;
-        SceneManager.LoadScene(_currentScene);
-
-        OnLevelLoaded();
+        if (_currentScene >= SceneManager.sceneCountInBuildSettings)
+        {
+            HeroStats.Loops++;
+            HeroStats.Reset();
+            _currentScene = 1;
+        }
+        LoadScene(_currentScene);
     }
 
     public void OnExit()
     {
-        _currentScene += 1;
-
-        SceneManager.LoadScene(_currentScene);
-        OnLevelLoaded();
+        NextLevel();
     }
 
-    public void OnLevelLoaded()
+    private void LoadScene(int index)
     {
+        _ui.FadeOut(() =>
+        {
+            _loading = SceneManager.LoadSceneAsync(index);
+            StartCoroutine(OnLevelLoaded());
+        });
+    }
+
+
+    public IEnumerator OnLevelLoaded()
+    {
+        while (_loading != null && !_loading.isDone)
+        {
+            yield return null;
+        }
+        _ui.FadeIn();
+
+        _loading = null;
+        
         if (_currentScene > 0)
         {
             var enter = GameObject.FindGameObjectWithTag("Enter");
@@ -168,6 +185,8 @@ public class GameController : MonoBehaviour
             }
 
             _ui.OnLevelChange();
+            
+            _sounds.StopAllLoops();
         }
     }
 }

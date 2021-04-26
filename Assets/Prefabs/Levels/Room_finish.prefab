@@ -2267,6 +2267,10 @@ MonoBehaviour:
   Crown: {fileID: 21300000, guid: 7e8a38b7cbd14ea46a45d27545ab7504, type: 3}
   Scarf: {fileID: 21300000, guid: 44e3ba3d2b4026247bdb29d19690f9ec, type: 3}
   Boots: {fileID: 21300000, guid: e9e72d30916aa864aa445c6b9282e212, type: 3}
+  Lavas:
+  - {fileID: 6531817374617810615}
+  - {fileID: 3003850034892066081}
+  - {fileID: 8303581697767635980}
 --- !u!1 &8109085712398023739
 GameObject:
   m_ObjectHideFlags: 0
@@ -3061,6 +3065,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa67b787247e8774196fb70327dbe51d, type: 3}
+--- !u!114 &6531817374617810615 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6781883056156846307, guid: fa67b787247e8774196fb70327dbe51d, type: 3}
+  m_PrefabInstance: {fileID: 341072899239157332}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33f6fb58294c044db0d8c5c639a2d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6355616879039546539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6667601369182542591, guid: fa67b787247e8774196fb70327dbe51d, type: 3}
@@ -3142,6 +3157,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6667601369182542591, guid: fa67b787247e8774196fb70327dbe51d, type: 3}
   m_PrefabInstance: {fileID: 3252207211956917487}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8303581697767635980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6781883056156846307, guid: fa67b787247e8774196fb70327dbe51d, type: 3}
+  m_PrefabInstance: {fileID: 3252207211956917487}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33f6fb58294c044db0d8c5c639a2d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3394065716456517017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3167,7 +3193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3288161168479339002, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: roomName
-      value: The outer world
+      value: Hell Keba
       objectReference: {fileID: 0}
     - target: {fileID: 5539507073086421790, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: m_Enabled
@@ -3453,6 +3479,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6667601369182542591, guid: fa67b787247e8774196fb70327dbe51d, type: 3}
   m_PrefabInstance: {fileID: 8624893582294214082}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3003850034892066081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6781883056156846307, guid: fa67b787247e8774196fb70327dbe51d, type: 3}
+  m_PrefabInstance: {fileID: 8624893582294214082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33f6fb58294c044db0d8c5c639a2d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8806326804527245864
 PrefabInstance:
   m_ObjectHideFlags: 0
