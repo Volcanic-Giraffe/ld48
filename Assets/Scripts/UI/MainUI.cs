@@ -33,18 +33,15 @@ public class MainUI : MonoBehaviour
 
         MainText.color = Color.clear;
         SecondaryText.color = Color.clear;
-    }
-
-    private void Start()
-    {
+        
         _hero = FindObjectOfType<HeroScript>();
     }
 
-    public void OnLevelRestart()
+    public void OnLevelChange()
     {
         Reset();
     }
-
+    
     public void ShowHint(string text, float hideAfter = 3.0f, float delay = 0f)
     {
         SecondaryText.SetText(text);

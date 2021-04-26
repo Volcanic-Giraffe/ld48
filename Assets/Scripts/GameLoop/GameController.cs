@@ -33,6 +33,8 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        HeroStats.ElapsedTime += Time.deltaTime;
+        
         if (_restartCooldown >= 0) _restartCooldown -= Time.deltaTime;
 
         if (Input.GetButtonDown("Level Restart") && _restartCooldown <= 0)
@@ -70,8 +72,6 @@ public class GameController : MonoBehaviour
         
         SceneManager.LoadScene(_currentScene);
         OnLevelLoaded();
-        
-        _ui.OnLevelRestart();
     }
     public void TogglePause()
     {
@@ -90,8 +90,6 @@ public class GameController : MonoBehaviour
     {
         _speedUpRequested = false;
         _paused = true;
-        //oldVolume = _sounds.aSource.volume;
-        //_sounds.aSource.volume = 0.05f;
         _sounds.StopAllLoops();
         Time.timeScale = 0;
     }
@@ -100,7 +98,6 @@ public class GameController : MonoBehaviour
     {
         _speedUpRequested = false;
         _paused = false;
-        //_sounds.aSource.volume = oldVolume;
         Time.timeScale = 1f;
     }
 
@@ -135,6 +132,10 @@ public class GameController : MonoBehaviour
     public void NextLevel()
     {
         _sounds.StopAllLoops();
+        
+        HeroStats.Peppers += HeroStats.HoldingPeppers;
+        HeroStats.HoldingPeppers = 0;
+        
         _currentScene += 1;
         SceneManager.LoadScene(_currentScene);
         OnLevelLoaded();
@@ -154,5 +155,7 @@ public class GameController : MonoBehaviour
         var hero = FindObjectOfType<HeroScript>();
         hero.OnLevelEnter();
         hero.transform.position = enter.transform.position - Vector3.up;
+        
+        _ui.OnLevelChange();
     }
 }
