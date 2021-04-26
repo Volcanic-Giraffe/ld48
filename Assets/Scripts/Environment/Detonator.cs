@@ -12,16 +12,37 @@ public class Detonator : MonoBehaviour
 
     private Vector3 _handleOrigin;
 
+    private float _triggerTimer;
+    
+    private Sounds _sounds;
+
+    private bool _triggeredOnce;
+    
     private void Awake()
     {
+        _sounds = FindObjectOfType<Sounds>();
+        
         _handleOrigin = handle.position;
     }
 
     private void Update()
     {
-        if (Vector3.Distance(handle.position, _handleOrigin) >= handleTriggerDistance)
+        if (_triggerTimer > 0)
         {
-            target.Explode();
+            _triggerTimer -= Time.deltaTime;
+
+            if (_triggerTimer <= 0)
+            {
+                target.Explode();
+            }
+        }
+
+        if (!_triggeredOnce && Vector3.Distance(handle.position, _handleOrigin) >= handleTriggerDistance)
+        {
+            _triggeredOnce = true;
+            _sounds.PlayExact("button1");
+            
+            _triggerTimer = 0.5f;
         }
     }
 }
