@@ -7727,6 +7727,7 @@ Transform:
   - {fileID: 2360049697353878434}
   - {fileID: 9172998099733476047}
   - {fileID: 4027743701435342300}
+  - {fileID: 5590565960753456478}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13099,6 +13100,40 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1337226784397067730
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5380919083072561288}
+    m_Modifications:
+    - target: {fileID: 1447256388019727259, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
+      propertyPath: loopSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447256388019727259, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
+      propertyPath: randomSound
+      value: monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853184180788502668, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853184180788502668, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853184180788502668, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
+--- !u!4 &5590565960753456478 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6853184180788502668, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
+  m_PrefabInstance: {fileID: 1337226784397067730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1812122798695970681
 PrefabInstance:
   m_ObjectHideFlags: 0
