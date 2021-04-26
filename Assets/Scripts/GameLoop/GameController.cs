@@ -151,10 +151,11 @@ public class GameController : MonoBehaviour
 
     private void LoadScene(int index)
     {
-        
-        _loading = SceneManager.LoadSceneAsync(index);
-        
-        StartCoroutine(OnLevelLoaded());
+        _ui.FadeOut(() =>
+        {
+            _loading = SceneManager.LoadSceneAsync(index);
+            StartCoroutine(OnLevelLoaded());
+        });
     }
 
 
@@ -164,6 +165,7 @@ public class GameController : MonoBehaviour
         {
             yield return null;
         }
+        _ui.FadeIn();
 
         _loading = null;
         
