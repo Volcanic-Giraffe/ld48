@@ -48,7 +48,7 @@ public class HeroScript : MonoBehaviour
 
     public float fallDamageMagnitude;
     public bool ragdollOnDeath;
-
+    private bool _ignoreFallDamage;
 
     MeshRenderer assFlameCube;
     private float _dx;
@@ -98,7 +98,38 @@ public class HeroScript : MonoBehaviour
     {
         slideCollider.enabled = true;
         groundCollider.height = _originalGroundColliderHeight;
+        
+        _rigidbody.constraints = _originalConstraints;
+        
+        transform.rotation = _originalRotation;
 
+        ResetVelocity();
+        ResetFuel();
+
+        _died = false;
+        _ignoreFallDamage = false;
+    }
+
+    public void OnLevelEnter()
+    {
+        foreach (var cmp in GetComponents<HeroMod>()) Destroy(cmp);
+        
+        ResetVelocity();
+        ResetFuel();
+        
+        _ignoreFallDamage = false;
+    }
+
+    public void OnLevelExit()
+    {
+        // ignore fall damage on exit since some levels have a collider right under exit trigger and hero dies :(
+        _ignoreFallDamage = true;
+        
+        _sounds.PlayRandom("laugh");
+    }
+
+    public void ResetVelocity()
+    {
         // including leg joints
         var rigs = GetComponentsInChildren<Rigidbody>();
 
@@ -108,17 +139,10 @@ public class HeroScript : MonoBehaviour
             rig.angularVelocity = Vector3.zero;
         }
         
-        _rigidbody.constraints = _originalConstraints;
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.angularVelocity = Vector3.zero;
-        
-        transform.rotation = _originalRotation;
-
-        ResetFuel();
-
-        _died = false;
     }
-
+    
     internal void ResetFuel()
     {
         _flyTimer = FlyTime;
@@ -195,14 +219,15 @@ public class HeroScript : MonoBehaviour
         leg2.maxAngularVelocity = LegMaxAngVel;
 
         RaycastHit hit;
-        floating = !Physics.Raycast(transform.position + Vector3.up * 0.5f, -Vector3.up, out hit, 0.55f, ~LayerMask.GetMask("Hero", "HeroLegs", "IgnoreHero"));
+        floating = !Physics.Raycast(transform.position + Vector3.up * 0.5f, -Vector3.up, out hit, 0.55f, ~LayerMask.GetMask("Hero", "HeroLegs", "IgnoreHero", "FluidParticle"));
         leg1.angularDrag = LegAngDragFly;
         leg2.angularDrag = LegAngDragFly;
         if (_dx == 0)
         {
             if (!floating && _fly == 0)
             {
-                _rigidbody.velocity = Vector3.zero;
+                // this causes hero to stuck in triggers, movable rigidbodies and cancels fall impulse.
+                // _rigidbody.velocity = Vector3.zero;
                 leg1.angularDrag = LegAngDragStay;
                 leg2.angularDrag = LegAngDragStay;
             }
@@ -249,7 +274,7 @@ public class HeroScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.impulse.magnitude > fallDamageMagnitude && ragdollOnDeath)
+        if (collision.impulse.magnitude > fallDamageMagnitude && ragdollOnDeath && !_ignoreFallDamage)
         {
             DieHero();
         }

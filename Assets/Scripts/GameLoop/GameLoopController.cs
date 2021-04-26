@@ -7,7 +7,6 @@ public class GameLoopController : MonoBehaviour
 {
     private const float RestartCooldown = 1f;
 
-    private GameObject Hero;
     private MainUI _ui;
     public GameObject[] LevelPrefabs;
 
@@ -30,7 +29,6 @@ public class GameLoopController : MonoBehaviour
     private void Start()
     {
         HeroStats.Reset();
-        Hero = GameObject.FindGameObjectWithTag("Player");
         _ui = FindObjectOfType<MainUI>();
         StartLevel();
     }
@@ -147,8 +145,10 @@ public class GameLoopController : MonoBehaviour
         var level = Instantiate(LevelPrefabs[_levelIdx], transform);
         var enter = GameObject.FindGameObjectWithTag("Enter");
         if (enter == null) throw new Exception($"В {level} не найден вход, добавьте объект с тэгом Enter");
-        Hero.transform.position = enter.transform.position - Vector3.up;
-        foreach (var cmp in Hero.GetComponents<HeroMod>()) Destroy(cmp);
+        
+        var hero = FindObjectOfType<HeroScript>();
+        hero.OnLevelEnter();
+        hero.transform.position = enter.transform.position - Vector3.up;
     }
 
     public void OnExit()

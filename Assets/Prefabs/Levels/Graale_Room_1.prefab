@@ -4801,7 +4801,7 @@ GameObject:
   - component: {fileID: 2355340529978765757}
   - component: {fileID: 7805777257584991439}
   - component: {fileID: 4940866815783044614}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: OilConsumer
   m_TagString: Oil
   m_Icon: {fileID: 0}

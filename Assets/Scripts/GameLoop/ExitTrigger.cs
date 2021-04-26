@@ -23,9 +23,10 @@ public class ExitTrigger : MonoBehaviour
 
             if (!player.Died)
             {
+                player.OnLevelExit();
+
                 _exitedOnce = true;
-                _sounds.PlayRandom("laugh");
-                FindObjectOfType<GameLoopController>().OnExit();    
+                FindObjectOfType<GameLoopController>().OnExit();
             }
         }
     }
