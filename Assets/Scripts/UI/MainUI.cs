@@ -38,7 +38,7 @@ public class MainUI : MonoBehaviour
         _sounds = FindObjectOfType<Sounds>();
     }
 
-    private void Reset()
+    public void Reset()
     {
         _hero = FindObjectOfType<HeroScript>();
         
@@ -104,9 +104,11 @@ public class MainUI : MonoBehaviour
 
     public void ShowRoomName(string text)
     {
+        var col = roomName.color;
+        roomName.color = Color.clear;
         text ??= string.Empty;
-
-        roomName.SetText($"{text}{(HeroStats.Loops > 0 ? " (NG+)" :"")}"); ;
+        roomName.text = text;
+        roomName.DOColor(col, 1f);
     }
 
     public void TogglePause(bool val)

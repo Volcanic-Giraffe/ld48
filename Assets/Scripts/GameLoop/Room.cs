@@ -9,6 +9,12 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(WaitAndShowName());
+    }
+
+    private IEnumerator WaitAndShowName()
+    {
+        yield return new WaitForSeconds(3);
         var ui = FindObjectOfType<MainUI>();
         ui.ShowRoomName(roomName);
     }

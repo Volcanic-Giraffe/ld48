@@ -30,9 +30,14 @@ public class FinishController : MonoBehaviour
     public Sprite Scarf;
     public Sprite Boots;
 
+    public KillOnContact[] Lavas;
+
     void Start()
     {
+        DOTween.KillAll();
+        StopAllCoroutines();
         _ui = FindObjectOfType<MainUI>();
+        _ui.Reset();
         _sounds = FindObjectOfType<Sounds>();
         _hero = FindObjectOfType<HeroScript>();
         StartCoroutine(EndingCR());
@@ -75,6 +80,7 @@ public class FinishController : MonoBehaviour
         _hero.UpdateRewards();
 
         yield return new WaitForSeconds(1f);
+        foreach (var l in Lavas) Destroy(l);
         yield return Exit.transform.DOMoveY(-1.4f, 2f).SetEase(Ease.OutCubic).WaitForCompletion();
     }
 
