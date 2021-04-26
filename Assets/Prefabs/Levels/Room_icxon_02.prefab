@@ -3541,6 +3541,7 @@ Transform:
   - {fileID: 2355651204891759657}
   - {fileID: 1612881605579614276}
   - {fileID: 2762322436049292099}
+  - {fileID: 1395572074737441027}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32688,4 +32689,42 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8310613164660376981, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
   m_PrefabInstance: {fileID: 2355651204276391924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8446198006355893429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2355651204440864868}
+    m_Modifications:
+    - target: {fileID: 7379426433558021558, guid: d51138b9c38e4ec4581badbbff619143, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379426433558021558, guid: d51138b9c38e4ec4581badbbff619143, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379426433558021558, guid: d51138b9c38e4ec4581badbbff619143, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379426433558021558, guid: d51138b9c38e4ec4581badbbff619143, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379426433558021558, guid: d51138b9c38e4ec4581badbbff619143, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379426433558021558, guid: d51138b9c38e4ec4581badbbff619143, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d51138b9c38e4ec4581badbbff619143, type: 3}
+--- !u!4 &1395572074737441027 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7379426433558021558, guid: d51138b9c38e4ec4581badbbff619143, type: 3}
+  m_PrefabInstance: {fileID: 8446198006355893429}
   m_PrefabAsset: {fileID: 0}
