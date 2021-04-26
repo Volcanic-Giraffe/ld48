@@ -4,11 +4,11 @@ using UnityEngine;
 public static class HeroStats
 {
     // Сколько всего перцев (я не придумал, как получить программно)
-    public const int TotalPeppers = 15;
+    public const int TotalPeppers = 16;
 
     // Что считается спидраном для среднего LD-чувака
     // Без перцев можно пройти за 5:30 - 6:00, задроту можно и быстрее.
-    public const int SuperTimePar = 8 * 60;
+    public const int SuperTimePar = 9 * 60;
 
     public static int HoldingPeppers = 0;
     public static int Peppers = 0;
