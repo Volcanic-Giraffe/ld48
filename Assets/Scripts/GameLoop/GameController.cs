@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
 
     private Sounds _sounds;
     private MainUI _ui;
+    
+    private AsyncOperation _loading;
 
     private void Awake()
     {
@@ -73,8 +75,7 @@ public class GameController : MonoBehaviour
 
         _speedUpRequested = false;
 
-        SceneManager.LoadScene(_currentScene);
-        OnLevelLoaded();
+        LoadScene(_currentScene);
     }
     public void TogglePause()
     {
@@ -88,7 +89,7 @@ public class GameController : MonoBehaviour
         }
         _ui.TogglePause(_paused);
     }
-
+    
     public void PauseLevel()
     {
         _speedUpRequested = false;
@@ -126,8 +127,7 @@ public class GameController : MonoBehaviour
         _currentScene -= 1;
         if (_currentScene < 1) _currentScene = 1; // do not load starter scene
 
-        SceneManager.LoadScene(_currentScene);
-        OnLevelLoaded();
+        LoadScene(_currentScene);
     }
 
     public void NextLevel()
@@ -137,14 +137,11 @@ public class GameController : MonoBehaviour
             HeroStats.Peppers += HeroStats.HoldingPeppers;
             HeroStats.HoldingPeppers = 0;
         }
-
+        
         _currentScene += 1;
         if (_currentScene >= SceneManager.sceneCountInBuildSettings)
             _currentScene = 0;
-
-        SceneManager.LoadScene(_currentScene);
-
-        OnLevelLoaded();
+        LoadScene(_currentScene);
     }
 
     public void OnExit()
@@ -152,17 +149,25 @@ public class GameController : MonoBehaviour
         NextLevel();
     }
 
-    public void OnLevelLoaded()
+    private void LoadScene(int index)
     {
-        StartCoroutine(OnLevelLoadedCR());
+        _ui.FadeOut(() =>
+        {
+            _loading = SceneManager.LoadSceneAsync(index);
+            StartCoroutine(OnLevelLoaded());
+        });
     }
 
-    public IEnumerator OnLevelLoadedCR()
+
+    public IEnumerator OnLevelLoaded()
     {
-        while (SceneManager.GetActiveScene().buildIndex != _currentScene)
+        while (_loading != null && !_loading.isDone)
         {
             yield return null;
         }
+        _ui.FadeIn();
+
+        _loading = null;
         
         if (_currentScene > 0)
         {

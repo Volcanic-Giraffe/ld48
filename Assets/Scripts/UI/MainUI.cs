@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class MainUI : MonoBehaviour
 {
+    public Image overlay;
+    [Space]
     public TextMeshProUGUI SecondaryText;
     public TextMeshProUGUI MainText;
     public TextMeshProUGUI roomName;
@@ -15,7 +17,7 @@ public class MainUI : MonoBehaviour
     public TextMeshProUGUI Peppers;
     public Slider jetpackMeter;
 
-
+    [Space]
     public TextMeshProUGUI ResultTimeText;
     public TextMeshProUGUI ResultDeathText;
     public TextMeshProUGUI ResultPeppersText;
@@ -155,5 +157,20 @@ public class MainUI : MonoBehaviour
         ResultPeppersVal.text = HeroStats.Peppers.ToString();
         _sounds.PlayExact("slap2");
         yield return new WaitForSeconds(wait);
+    }
+
+    public void FadeOut(Action callback)
+    {
+        overlay.DOKill();
+        overlay.DOFade(1, 0.1f).onComplete = () =>
+        {
+            callback?.Invoke();
+        };
+    }
+
+    public void FadeIn()
+    {
+        overlay.DOKill();
+        overlay.DOFade(0, 0.3f);
     }
 }
