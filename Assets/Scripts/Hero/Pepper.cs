@@ -1,8 +1,12 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class Pepper : MonoBehaviour
 {
+    public ParticleSystem nomEffect;
+    public Transform pepper;
+
     private bool _picked;
 
     private Sounds _sounds;
@@ -20,7 +24,10 @@ public class Pepper : MonoBehaviour
             _sounds.PlayRandom("oh_yeah");
             _picked = true;
             HeroStats.HoldingPeppers++;
-            Destroy(gameObject);
+            nomEffect.Play();
+            pepper.DOScale(0, 0.4f);
+
+            Destroy(gameObject, 0.5f);
         }
     }
 }
