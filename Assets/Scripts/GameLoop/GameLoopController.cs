@@ -17,7 +17,7 @@ public class GameLoopController : MonoBehaviour
     private float _restartCooldown;
 
     private bool _paused;
-
+    private float oldVolume;
     private bool _speedUpRequested;
 
     private Sounds _sounds;
@@ -79,6 +79,9 @@ public class GameLoopController : MonoBehaviour
     {
         _speedUpRequested = false;
         _paused = true;
+        //oldVolume = _sounds.aSource.volume;
+        //_sounds.aSource.volume = 0.05f;
+        _sounds.StopAllLoops();
         Time.timeScale = 0;
     }
 
@@ -86,6 +89,7 @@ public class GameLoopController : MonoBehaviour
     {
         _speedUpRequested = false;
         _paused = false;
+        //_sounds.aSource.volume = oldVolume;
         Time.timeScale = 1f;
     }
 
