@@ -3193,7 +3193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3288161168479339002, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: roomName
-      value: Hell Keba
+      value: The Hottest Pit
       objectReference: {fileID: 0}
     - target: {fileID: 5539507073086421790, guid: a338a88eaa6d23d408ad7aa75b060a92, type: 3}
       propertyPath: m_Enabled

@@ -6,7 +6,8 @@ public static class HeroStats
     // Сколько всего перцев (я не придумал, как получить программно)
     public const int TotalPeppers = 15;
 
-    // Что считается спидраном
+    // Что считается спидраном для среднего LD-чувака
+    // Без перцев можно пройти за 5:30 - 6:00, задроту можно и быстрее.
     public const int SuperTimePar = 8 * 60;
 
     public static int HoldingPeppers = 0;
