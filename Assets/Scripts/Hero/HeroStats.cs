@@ -11,6 +11,7 @@ public static class HeroStats
 
     public static int HoldingPeppers = 0;
     public static int Peppers = 0;
+    public static int Loops = 0;
     public static float ElapsedTime = 0;
     public static int Deaths = 0;
 

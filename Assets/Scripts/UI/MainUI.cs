@@ -25,6 +25,10 @@ public class MainUI : MonoBehaviour
     public TextMeshProUGUI ResultDeathVal;
     public TextMeshProUGUI ResultPeppersVal;
 
+    public Image TimeStar;
+    public Image DeathStar;
+    public Image PeppersStar;
+
     private HeroScript _hero;
     private Sounds _sounds;
 
@@ -55,6 +59,10 @@ public class MainUI : MonoBehaviour
         ResultTimeVal.enabled = false;
         ResultDeathVal.enabled = false;
         ResultPeppersVal.enabled = false;
+
+        TimeStar.enabled = false;
+        DeathStar.enabled = false;
+        PeppersStar.enabled = false;
     }
 
     public void OnLevelChange()
@@ -98,7 +106,7 @@ public class MainUI : MonoBehaviour
     {
         text ??= string.Empty;
 
-        roomName.SetText(text);
+        roomName.SetText($"{text}{(HeroStats.Loops > 0 ? " (NG+)" :"")}"); ;
     }
 
     public void TogglePause(bool val)
@@ -138,6 +146,13 @@ public class MainUI : MonoBehaviour
         _sounds.PlayExact("slap2");
         yield return new WaitForSeconds(wait);
 
+        if (HeroStats.ElapsedTime <= HeroStats.SuperTimePar)
+        {
+            TimeStar.enabled = true;
+            _sounds.PlayExact("can2");
+            yield return new WaitForSeconds(wait);
+        }
+
 
         ResultDeathText.enabled = true;
         _sounds.PlayExact("slap2");
@@ -148,6 +163,13 @@ public class MainUI : MonoBehaviour
         _sounds.PlayExact("slap2");
         yield return new WaitForSeconds(wait);
 
+        if (HeroStats.Deaths == 0)
+        {
+            DeathStar.enabled = true;
+            _sounds.PlayExact("can2");
+            yield return new WaitForSeconds(wait);
+        }
+
 
         ResultPeppersText.enabled = true;
         _sounds.PlayExact("slap2");
@@ -157,6 +179,13 @@ public class MainUI : MonoBehaviour
         ResultPeppersVal.text = HeroStats.Peppers.ToString();
         _sounds.PlayExact("slap2");
         yield return new WaitForSeconds(wait);
+
+        if (HeroStats.Peppers >= HeroStats.TotalPeppers)
+        {
+            PeppersStar.enabled = true;
+            _sounds.PlayExact("can2");
+            yield return new WaitForSeconds(wait);
+        }
     }
 
     public void FadeOut(Action callback)

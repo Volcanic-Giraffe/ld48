@@ -140,7 +140,11 @@ public class GameController : MonoBehaviour
         
         _currentScene += 1;
         if (_currentScene >= SceneManager.sceneCountInBuildSettings)
-            _currentScene = 0;
+        {
+            HeroStats.Loops++;
+            HeroStats.Reset();
+            _currentScene = 1;
+        }
         LoadScene(_currentScene);
     }
 

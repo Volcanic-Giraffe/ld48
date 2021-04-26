@@ -13,6 +13,7 @@ public enum Rewards
 public class FinishController : MonoBehaviour
 {
     private MainUI _ui;
+    private Sounds _sounds;
     private HeroScript _hero;
     public GameObject Exit;
     public GameObject SatanHand;
@@ -32,6 +33,7 @@ public class FinishController : MonoBehaviour
     void Start()
     {
         _ui = FindObjectOfType<MainUI>();
+        _sounds = FindObjectOfType<Sounds>();
         _hero = FindObjectOfType<HeroScript>();
         StartCoroutine(EndingCR());
         
@@ -57,6 +59,7 @@ public class FinishController : MonoBehaviour
             SatanEyeRight.transform.DOScale(1.1f, 0.3f);
         }
         SatanHand.transform.DORotate(new Vector3(0, 0, 7), 0.4f).SetEase(Ease.OutCubic);
+        _sounds.PlayExact("laugh1");
 
         yield return new WaitForSeconds(0.6f);
         var displayedReward = rewards.Find(x => !HeroStats.ExistingRewards.Contains(x));
@@ -71,10 +74,8 @@ public class FinishController : MonoBehaviour
         }
         _hero.UpdateRewards();
 
-        HeroStats.Reset();
         yield return new WaitForSeconds(1f);
         yield return Exit.transform.DOMoveY(-1.4f, 2f).SetEase(Ease.OutCubic).WaitForCompletion();
-
     }
 
     private void ShowMsgBox(Rewards displayedReward)
