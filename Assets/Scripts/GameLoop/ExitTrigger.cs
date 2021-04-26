@@ -26,7 +26,9 @@ public class ExitTrigger : MonoBehaviour
                 player.OnLevelExit();
 
                 _exitedOnce = true;
-                FindObjectOfType<GameLoopController>().OnExit();
+                // FindObjectOfType<GameLoopController>().OnExit();
+                
+                FindObjectOfType<GameController>().OnExit();
             }
         }
     }

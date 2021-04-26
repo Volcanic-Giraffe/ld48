@@ -61,7 +61,7 @@ public class HeroScript : MonoBehaviour
 
     private bool _jetJustEnded;
     
-    private GameLoopController _game;
+    // private GameLoopController _game;
     private MainUI _ui;
     private Sounds _sounds;
 
@@ -80,7 +80,7 @@ public class HeroScript : MonoBehaviour
         assFlameCube = assFlame.GetComponent<MeshRenderer>();
 
         _ui = FindObjectOfType<MainUI>();
-        _game = FindObjectOfType<GameLoopController>();
+        // _game = FindObjectOfType<GameLoopController>();
         _sounds = FindObjectOfType<Sounds>();
 
         _originalRotation = transform.rotation;
@@ -267,7 +267,7 @@ public class HeroScript : MonoBehaviour
         groundCollider.height = 0.5f;
 
         _ui.ShowDeadMessage();
-        _game.SlowDown();
+        // _game.SlowDown();
 
         deathEffect.Play();
     }
