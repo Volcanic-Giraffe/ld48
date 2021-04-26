@@ -8,6 +8,12 @@
 /[Bb]uilds/
 /[Ll]ogs/
 
+/Capsaiciner.exe
+/Capsaiciner_Data
+/MonoBleedingEdge
+/UnityCrashHandler64.exe
+/UnityPlayer.dll
+
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
