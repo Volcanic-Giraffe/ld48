@@ -11,6 +11,8 @@ public class Flameable : MonoBehaviour
 
     public ParticleSystem FirePrefab;
 
+    public bool CanRenewFire = true;
+    
     private float _whenStartedToFire;
     private bool _isBurning;
     private ParticleSystem _fire;
@@ -36,6 +38,7 @@ public class Flameable : MonoBehaviour
 
     public void DoBurn()
     {
+        if (_isBurning && !CanRenewFire) return;
         _whenStartedToFire = Time.time; 
         
         if (_isBurning) return;

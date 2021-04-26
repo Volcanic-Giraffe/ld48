@@ -27,7 +27,7 @@ public class MeshProducer : MonoBehaviour
     private void Start()
     {
         var secondsBetweenSpawns = 60 / ItemsPerMinute;
-        InvokeRepeating(nameof(Spawn), secondsBetweenSpawns, secondsBetweenSpawns);
+        InvokeRepeating(nameof(Spawn), secondsBetweenSpawns * Random.Range(0.9f, 1.1f), secondsBetweenSpawns * Random.Range(0.9f, 1.1f));
     }
 
     void Spawn()

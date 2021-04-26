@@ -46,7 +46,7 @@ MonoBehaviour:
   Prefabs:
   - {fileID: 5516730466147293676, guid: c84d73c7cfc4fe64a996f6f14444e83f, type: 3}
   - {fileID: 5516730466147293676, guid: 9c128178139d92f40a589d9146b7c816, type: 3}
-  ItemsPerMinute: 1000
+  ItemsPerMinute: 2000
   Randomize: 0.5
   Intensity: 0.1
 --- !u!1 &2077967303340555216
