@@ -147,6 +147,7 @@ MonoBehaviour:
   EverySeconds: 1
   TweenAngleAtRandom: 10
   TweenScaleAtRandom: 0
+  TweenPositionInRandomRadius: 0
   Duration: 0.5
   Ease: 5
 --- !u!114 &4626947229356546698
@@ -273,7 +274,7 @@ GameObject:
   - component: {fileID: 7643573560746349438}
   - component: {fileID: 2175267005166556994}
   - component: {fileID: 2315023046402170}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Chudila_3h
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,6 +312,7 @@ MonoBehaviour:
   EverySeconds: 1
   TweenAngleAtRandom: 15
   TweenScaleAtRandom: 0
+  TweenPositionInRandomRadius: 0
   Duration: 0.5
   Ease: 5
 --- !u!114 &2175267005166556994
@@ -391,6 +393,7 @@ MonoBehaviour:
   EverySeconds: 1
   TweenAngleAtRandom: 15
   TweenScaleAtRandom: 0
+  TweenPositionInRandomRadius: 0
   Duration: 0.5
   Ease: 5
 --- !u!114 &5203549293830567945
@@ -681,6 +684,7 @@ MonoBehaviour:
   EverySeconds: 1
   TweenAngleAtRandom: 15
   TweenScaleAtRandom: 0
+  TweenPositionInRandomRadius: 0
   Duration: 0.5
   Ease: 5
 --- !u!114 &8173683004044660059
@@ -1149,6 +1153,7 @@ MonoBehaviour:
   EverySeconds: 1
   TweenAngleAtRandom: 15
   TweenScaleAtRandom: 0
+  TweenPositionInRandomRadius: 0
   Duration: 0.5
   Ease: 5
 --- !u!114 &4703460327886665961
@@ -1487,6 +1492,7 @@ MonoBehaviour:
   EverySeconds: 1
   TweenAngleAtRandom: 10
   TweenScaleAtRandom: 0
+  TweenPositionInRandomRadius: 0
   Duration: 0.5
   Ease: 5
 --- !u!114 &8685985443161730659
@@ -1972,6 +1978,7 @@ MonoBehaviour:
   EverySeconds: 1
   TweenAngleAtRandom: 10
   TweenScaleAtRandom: 0
+  TweenPositionInRandomRadius: 0
   Duration: 0.5
   Ease: 5
 --- !u!114 &2195776562657797270

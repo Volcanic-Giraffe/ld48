@@ -233,6 +233,7 @@ public class HeroScript : MonoBehaviour
         _died = true;
 
         _sounds.PlayRandom("grunt");
+        _sounds.PlayRandom("crunchy_thump2");
         
         _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
                                  RigidbodyConstraints.FreezePositionZ;
