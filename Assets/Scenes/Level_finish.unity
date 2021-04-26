@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 196964176919866467, guid: 24a19d941a5701b49ad0d0f3c0796f04, type: 3}
+      propertyPath: roomName
+      value: The Hottest Pit
+      objectReference: {fileID: 0}
     - target: {fileID: 1566712951700841784, guid: 24a19d941a5701b49ad0d0f3c0796f04, type: 3}
       propertyPath: m_Mesh
       value: 

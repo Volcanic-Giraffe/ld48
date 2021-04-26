@@ -41,7 +41,7 @@ public class MainUI : MonoBehaviour
     public void Reset()
     {
         _hero = FindObjectOfType<HeroScript>();
-        
+
         SecondaryText.DOKill();
         MainText.DOKill();
 
@@ -151,10 +151,10 @@ public class MainUI : MonoBehaviour
         if (HeroStats.ElapsedTime <= HeroStats.SuperTimePar)
         {
             TimeStar.enabled = true;
+            ResultTimeVal.color = new Color(1, 0.65f, 0, 02f);
             _sounds.PlayExact("can2");
             yield return new WaitForSeconds(wait);
         }
-
 
         ResultDeathText.enabled = true;
         _sounds.PlayExact("slap2");
@@ -167,6 +167,7 @@ public class MainUI : MonoBehaviour
 
         if (HeroStats.Deaths == 0)
         {
+            ResultDeathVal.color = new Color(1, 0.65f, 0, 02f);
             DeathStar.enabled = true;
             _sounds.PlayExact("can2");
             yield return new WaitForSeconds(wait);
@@ -184,6 +185,7 @@ public class MainUI : MonoBehaviour
 
         if (HeroStats.Peppers >= HeroStats.TotalPeppers)
         {
+            ResultPeppersVal.color = new Color(1, 0.65f, 0, 02f);
             PeppersStar.enabled = true;
             _sounds.PlayExact("can2");
             yield return new WaitForSeconds(wait);
