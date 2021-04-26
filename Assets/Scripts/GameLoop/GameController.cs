@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        NextLevel();
     }
 
     private void Update()
@@ -123,7 +124,7 @@ public class GameController : MonoBehaviour
         _sounds.StopAllLoops();
         
         _currentScene -= 1;
-        if (_currentScene < 0) _currentScene = 0;
+        if (_currentScene < 1) _currentScene = 1; // do not load starter scene
 
         SceneManager.LoadScene(_currentScene);
         OnLevelLoaded();
@@ -131,13 +132,17 @@ public class GameController : MonoBehaviour
 
     public void NextLevel()
     {
-        _sounds.StopAllLoops();
-        
-        HeroStats.Peppers += HeroStats.HoldingPeppers;
-        HeroStats.HoldingPeppers = 0;
+        if (_currentScene > 0)
+        {
+            _sounds.StopAllLoops();
+            HeroStats.Peppers += HeroStats.HoldingPeppers;
+            HeroStats.HoldingPeppers = 0;
+
+        }
         
         _currentScene += 1;
         SceneManager.LoadScene(_currentScene);
+
         OnLevelLoaded();
     }
 
@@ -151,11 +156,18 @@ public class GameController : MonoBehaviour
 
     public void OnLevelLoaded()
     {
-        var enter = GameObject.FindGameObjectWithTag("Enter");
-        var hero = FindObjectOfType<HeroScript>();
-        hero.OnLevelEnter();
-        hero.transform.position = enter.transform.position - Vector3.up;
-        
-        _ui.OnLevelChange();
+        if (_currentScene > 0)
+        {
+            var enter = GameObject.FindGameObjectWithTag("Enter");
+            var hero = FindObjectOfType<HeroScript>();
+
+            if (hero != null)
+            {
+                hero.OnLevelEnter();
+                hero.transform.position = enter.transform.position - Vector3.up;
+            }
+
+            _ui.OnLevelChange();
+        }
     }
 }
