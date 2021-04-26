@@ -158,6 +158,8 @@ public class GameLoopController : MonoBehaviour
 
     private void NextLevel()
     {
+        _sounds.StopAllLoops();
+        
         HeroStats.Peppers += HeroStats.HoldingPeppers;
         HeroStats.HoldingPeppers = 0;
 
@@ -175,6 +177,8 @@ public class GameLoopController : MonoBehaviour
 
     private void PrevLevel()
     {
+        _sounds.StopAllLoops();
+        
         _levelIdx--;
         if (_levelIdx >= 0)
         {
