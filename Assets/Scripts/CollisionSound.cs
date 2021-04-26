@@ -13,6 +13,8 @@ public class CollisionSound : MonoBehaviour
 
     private Sounds _sounds;
 
+    private float _cooldown;
+
     private void Awake()
     {
         _sounds = FindObjectOfType<Sounds>();
@@ -21,14 +23,16 @@ public class CollisionSound : MonoBehaviour
     private void Update()
     {
         if (silenceTime > 0) silenceTime -= Time.deltaTime;
+        if (_cooldown > 0) _cooldown -= Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (silenceTime > 0) return;
 
-        if (collision.impulse.magnitude > magnitudeToTrigger)
+        if (collision.impulse.magnitude > magnitudeToTrigger && _cooldown <= 0)
         {
+            _cooldown = 0.4f;
             _sounds.PlayRandom(soundPrefix);
         }
     }
