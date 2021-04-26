@@ -70,8 +70,9 @@ public class GameController : MonoBehaviour
     {
         _sounds.PlayRandom("double_click");
 
-        if (_currentScene < SceneManager.sceneCountInBuildSettings - 1)
-            HeroStats.Deaths += 1;
+        // cheating, but I dont mind
+        //if (_currentScene < SceneManager.sceneCountInBuildSettings - 1)
+        //    HeroStats.Deaths += 1;
         HeroStats.HoldingPeppers = 0;
 
         Time.timeScale = 1f;
