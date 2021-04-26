@@ -69,6 +69,7 @@ public class FinishController : MonoBehaviour
                 HeroStats.ExistingRewards.Add(reward);
             }
         }
+        _hero.UpdateRewards();
 
         HeroStats.Reset();
         yield return new WaitForSeconds(1f);
