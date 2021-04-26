@@ -49,6 +49,7 @@ MonoBehaviour:
   EverySeconds: 1
   TweenAngleAtRandom: 10
   TweenScaleAtRandom: 0.3
+  TweenPositionInRandomRadius: 0
   Duration: 0.5
   Ease: 26
 --- !u!114 &4561780014411315982
@@ -192,7 +193,7 @@ GameObject:
   - component: {fileID: 7643573560746349438}
   - component: {fileID: 2315023046402170}
   - component: {fileID: 5165726724592889979}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Chudila_small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,6 +231,7 @@ MonoBehaviour:
   EverySeconds: 1
   TweenAngleAtRandom: 15
   TweenScaleAtRandom: 0
+  TweenPositionInRandomRadius: 0
   Duration: 0.5
   Ease: 26
 --- !u!135 &2315023046402170
