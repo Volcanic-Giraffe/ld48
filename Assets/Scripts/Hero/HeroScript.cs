@@ -369,6 +369,7 @@ public class HeroScript : MonoBehaviour
                 break;
             case Rewards.FireScarf:
                 RewardScarf.SetActive(true);
+                FlyTime *= 1.1f;
                 break;
             case Rewards.RedBoots:
                 RewardBoot1.SetActive(true);
