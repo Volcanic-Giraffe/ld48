@@ -19,7 +19,7 @@ public class GameLoopController : MonoBehaviour
     private bool _paused;
 
     private bool _speedUpRequested;
-    
+
     private Sounds _sounds;
 
     private void Awake()
@@ -110,7 +110,7 @@ public class GameLoopController : MonoBehaviour
     public void RestartLevel()
     {
         _sounds.PlayRandom("double_click");
-        
+
         HeroStats.Deaths += 1;
         HeroStats.HoldingPeppers = 0;
 
@@ -118,7 +118,7 @@ public class GameLoopController : MonoBehaviour
 
         _speedUpRequested = false;
         Time.timeScale = 1f;
-        
+
         var hero = FindObjectOfType<HeroScript>();
         hero.OnLevelRestart();
 
@@ -128,10 +128,17 @@ public class GameLoopController : MonoBehaviour
 
     public void StartLevel()
     {
+        StartCoroutine(StartLevelCR());
+    }
+
+    private IEnumerator StartLevelCR()
+    {
         foreach (Transform t in transform)
         {
             Destroy(t.gameObject);
         }
+        // alternative is DestroyImmediate
+        yield return new WaitForEndOfFrame();
 
         var level = Instantiate(LevelPrefabs[_levelIdx], transform);
         var enter = GameObject.FindGameObjectWithTag("Enter");
