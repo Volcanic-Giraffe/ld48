@@ -13,4 +13,14 @@ public class MeshConsumer : MonoBehaviour
             Destroy(other.gameObject,1f);
         }
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.collider.CompareTag(this.tag))
+        {
+            // so it can fall through the ground and die there
+            other.collider.enabled = false;
+            Destroy(other.gameObject,1f);
+        }        
+    }
 }
