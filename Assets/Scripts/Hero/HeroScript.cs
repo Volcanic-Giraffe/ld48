@@ -105,7 +105,7 @@ public class HeroScript : MonoBehaviour
     {
         leg1.centerOfMass = new Vector3(0, -0.2f, 0);
         leg2.centerOfMass = new Vector3(0, -0.2f, 0);
-        //UpdateRewards();
+        UpdateRewards();
     }
 
     public void OnLevelRestart()
