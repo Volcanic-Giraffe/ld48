@@ -92,7 +92,7 @@ public class MainUI : MonoBehaviour
     private void Update()
     {
         UpdateJetPack();
-        TimeText.text = $"{HeroStats.ElapsedTime / 60: 00} : {HeroStats.ElapsedTime : 00}";
+        TimeText.text = $"{HeroStats.ElapsedTime / 60: 00} : {HeroStats.ElapsedTime % 60 : 00}";
         Peppers.text = (HeroStats.Peppers + HeroStats.HoldingPeppers).ToString();
     }
 
