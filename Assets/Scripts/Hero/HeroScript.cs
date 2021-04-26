@@ -105,7 +105,7 @@ public class HeroScript : MonoBehaviour
     {
         leg1.centerOfMass = new Vector3(0, -0.2f, 0);
         leg2.centerOfMass = new Vector3(0, -0.2f, 0);
-        UpdateRewards();
+        //UpdateRewards();
     }
 
     public void OnLevelRestart()
@@ -177,6 +177,7 @@ public class HeroScript : MonoBehaviour
         if (_fly != 0) TorsoSR.sprite = flySprite;
         else TorsoSR.sprite = standSprite;
 
+        MoveRewards();
 
         if (_fly != 0 && _flyTimer > 0)
         {
@@ -217,6 +218,44 @@ public class HeroScript : MonoBehaviour
         if (_legTimer >= 1f)
         {
             _legTimer = 0f;
+        }
+    }
+
+    private void MoveRewards()
+    {
+        if (_fly != 0)
+        {
+            if (TorsoSR.flipX == true)
+            {
+                RewardCrown.transform.localPosition = new Vector3(-0.057f, 0.93f, 0);
+                RewardCrown.transform.localRotation = Quaternion.Euler(new Vector3(0,0,32));
+                RewardTopHat.transform.localPosition = new Vector3(-0.05f, 0.91f, 0);
+                RewardTopHat.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 32));
+            }
+            else
+            {
+                RewardCrown.transform.localPosition = new Vector3(0.064f, 0.93f, 0);
+                RewardCrown.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -32));
+                RewardTopHat.transform.localPosition = new Vector3(0.058f, 0.908f, 0);
+                RewardTopHat.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -32));
+            }
+        }
+        else
+        {
+            if (TorsoSR.flipX == true)
+            {
+                RewardCrown.transform.localPosition = new Vector3(0.055f, 0.94f, 0);
+                RewardCrown.transform.localRotation = Quaternion.identity;
+                RewardTopHat.transform.localPosition = new Vector3(0.059f, 0.94f, 0);
+                RewardTopHat.transform.localRotation = Quaternion.identity;
+            }
+            else
+            {
+                RewardCrown.transform.localPosition = new Vector3(-0.038f, 0.94f, 0);
+                RewardCrown.transform.localRotation = Quaternion.identity;
+                RewardTopHat.transform.localPosition = new Vector3(-0.044f, 0.92f, 0);
+                RewardTopHat.transform.localRotation = Quaternion.identity;
+            }
         }
     }
 
