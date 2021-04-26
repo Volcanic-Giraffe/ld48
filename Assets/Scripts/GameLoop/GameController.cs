@@ -123,8 +123,6 @@ public class GameController : MonoBehaviour
     }
     public void PrevLevel()
     {
-        _sounds.StopAllLoops();
-
         _currentScene -= 1;
         if (_currentScene < 1) _currentScene = 1; // do not load starter scene
 
@@ -136,7 +134,6 @@ public class GameController : MonoBehaviour
     {
         if (_currentScene > 0)
         {
-            _sounds.StopAllLoops();
             HeroStats.Peppers += HeroStats.HoldingPeppers;
             HeroStats.HoldingPeppers = 0;
         }
@@ -157,6 +154,16 @@ public class GameController : MonoBehaviour
 
     public void OnLevelLoaded()
     {
+        StartCoroutine(OnLevelLoadedCR());
+    }
+
+    public IEnumerator OnLevelLoadedCR()
+    {
+        while (SceneManager.GetActiveScene().buildIndex != _currentScene)
+        {
+            yield return null;
+        }
+        
         if (_currentScene > 0)
         {
             var enter = GameObject.FindGameObjectWithTag("Enter");
@@ -169,6 +176,8 @@ public class GameController : MonoBehaviour
             }
 
             _ui.OnLevelChange();
+            
+            _sounds.StopAllLoops();
         }
     }
 }

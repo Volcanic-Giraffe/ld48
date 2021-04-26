@@ -30,11 +30,12 @@ public class MainUI : MonoBehaviour
     {
         Reset();
         _sounds = FindObjectOfType<Sounds>();
-        _hero = FindObjectOfType<HeroScript>();
     }
 
     private void Reset()
     {
+        _hero = FindObjectOfType<HeroScript>();
+        
         SecondaryText.DOKill();
         MainText.DOKill();
 
