@@ -98,11 +98,23 @@ public class HeroScript : MonoBehaviour
     {
         slideCollider.enabled = true;
         groundCollider.height = _originalGroundColliderHeight;
+
+        // including leg joints
+        var rigs = GetComponentsInChildren<Rigidbody>();
+
+        foreach (var rig in rigs)
+        {
+            rig.velocity = Vector3.zero;
+            rig.angularVelocity = Vector3.zero;
+        }
+        
         _rigidbody.constraints = _originalConstraints;
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.angularVelocity = Vector3.zero;
+        
         transform.rotation = _originalRotation;
 
+        ResetFuel();
 
         _died = false;
     }
@@ -240,7 +252,6 @@ public class HeroScript : MonoBehaviour
         {
             DieHero();
         }
-
         
         if (collision.impulse.magnitude > 5f)
         {
