@@ -6,9 +6,48 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: b9baf6e3528dc614faa784dcb97a8acf
+    path: Assets/Scenes/Level_menu.unity
+    guid: 34172801c148a514d912bfcb0d010e39
   - enabled: 1
-    path: Assets/Scenes/GameOverScene.unity
-    guid: 7ea4249a2cf0d2d44971f072746780f4
+    path: Assets/Scenes/Level_a_simple1.unity
+    guid: 179fe9cd5c48b574eb0802174157de8d
+  - enabled: 1
+    path: Assets/Scenes/Level_a_simple2.unity
+    guid: 5236af749f5990d46941e79442307c75
+  - enabled: 1
+    path: Assets/Scenes/Level_a1.unity
+    guid: f7de06b0fe97c434d9f695c417bcd27b
+  - enabled: 1
+    path: Assets/Scenes/Level_a2.unity
+    guid: 237892939ff85894296b84e407aee0d9
+  - enabled: 1
+    path: Assets/Scenes/Level_room1.unity
+    guid: 23e67a915bf94034c8e1a4e77811f52d
+  - enabled: 1
+    path: Assets/Scenes/Level_a3.unity
+    guid: 196fe560c29dbb7419939e7e67b4e11a
+  - enabled: 1
+    path: Assets/Scenes/Level_icxon1.unity
+    guid: 6848f7aa55b9df943b487f556a5dfa9d
+  - enabled: 1
+    path: Assets/Scenes/Level_a4.unity
+    guid: 4b8cbb7811857d04ab06e8f4afe933b3
+  - enabled: 1
+    path: Assets/Scenes/Level_icxon2.unity
+    guid: 7dc2ab78f122fd74aa5aa8acdcedad92
+  - enabled: 1
+    path: Assets/Scenes/Level_icxon3.unity
+    guid: b146a9ec0bba2e94d811f31e24b184b1
+  - enabled: 1
+    path: Assets/Scenes/Level_graale_1.unity
+    guid: 72edca329f57c844c99097b0c9494680
+  - enabled: 1
+    path: Assets/Scenes/Level_a5.unity
+    guid: b8e270dc01da45245971ae8100306fe2
+  - enabled: 1
+    path: Assets/Scenes/Level_water.unity
+    guid: 28c7ef8a3fce1304886f5faa13088953
+  - enabled: 1
+    path: Assets/Scenes/Level_a6.unity
+    guid: ff7e015926a08fb44a1a00ef71d8172f
   m_configObjects: {}

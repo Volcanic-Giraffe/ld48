@@ -30,6 +30,7 @@ public class MainUI : MonoBehaviour
     {
         Reset();
         _sounds = FindObjectOfType<Sounds>();
+        _hero = FindObjectOfType<HeroScript>();
     }
 
     private void Reset()
@@ -53,12 +54,7 @@ public class MainUI : MonoBehaviour
         ResultPeppersVal.enabled = false;
     }
 
-    private void Start()
-    {
-        _hero = FindObjectOfType<HeroScript>();
-    }
-
-    public void OnLevelRestart()
+    public void OnLevelChange()
     {
         Reset();
     }

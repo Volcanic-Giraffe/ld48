@@ -71,7 +71,7 @@ public class HeroScript : MonoBehaviour
 
     private bool _jetJustEnded;
     
-    private GameLoopController _game;
+    private GameController _game;
     private MainUI _ui;
     private Sounds _sounds;
 
@@ -80,6 +80,8 @@ public class HeroScript : MonoBehaviour
     private RigidbodyConstraints _originalConstraints;
 
     public float RemainingFly => FlyTime > 0 ? _flyTimer / FlyTime : 1f;
+    
+    private Musician _musician;
 
     public bool Died => _died;
     private void Awake()
@@ -90,8 +92,10 @@ public class HeroScript : MonoBehaviour
         assFlameCube = assFlame.GetComponent<MeshRenderer>();
 
         _ui = FindObjectOfType<MainUI>();
-        _game = FindObjectOfType<GameLoopController>();
+        _game = FindObjectOfType<GameController>();
         _sounds = FindObjectOfType<Sounds>();
+
+        _musician = FindObjectOfType<Musician>();
 
         _originalRotation = transform.rotation;
         _originalGroundColliderHeight = groundCollider.height;
@@ -179,6 +183,7 @@ public class HeroScript : MonoBehaviour
             _flyTimer -= Time.deltaTime;
             if (!assFlame.isPlaying)
             {
+                _musician?.OnStartAssFlame();
                 assFlame.Play();
                 assFlameCube.enabled = true;
                 
@@ -188,6 +193,7 @@ public class HeroScript : MonoBehaviour
         }
         else
         {
+            _musician?.OnStopAssFlame();
             assFlame.Stop();
             assFlameCube.enabled = false;
             
@@ -266,6 +272,7 @@ public class HeroScript : MonoBehaviour
     {
         if (_died) return;
         _died = true;
+        _musician?.OnHeroDie();
 
         _sounds.PlayRandom("grunt");
         _sounds.PlayRandom("crunchy_thump2");
