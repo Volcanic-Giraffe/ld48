@@ -8926,6 +8926,14 @@ PrefabInstance:
       propertyPath: radius
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1447256388019727259, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
+      propertyPath: loopSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447256388019727259, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
+      propertyPath: randomSound
+      value: whisper
+      objectReference: {fileID: 0}
     - target: {fileID: 3120217288287252576, guid: d8265051a4dddfa4c9764284e8c0cd57, type: 3}
       propertyPath: m_Name
       value: EnvironmentSound
