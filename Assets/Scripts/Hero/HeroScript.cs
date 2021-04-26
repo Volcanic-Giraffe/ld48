@@ -21,7 +21,7 @@ public class HeroScript : MonoBehaviour
     [Tooltip("Партиклер жопы")]
     public ParticleSystem assFlame;
     public ParticleSystem deathEffect;
-    
+
     [Space]
     [Header("Legs:")]
     [Tooltip("Сила вращения ног (1-мало, 20-быстро)")]
@@ -32,13 +32,13 @@ public class HeroScript : MonoBehaviour
     public float LegAngDragStay;
     [Tooltip("Максимальная скорость вращения ногов (>50 - физика трещит")]
     public float LegMaxAngVel;
-    
+
     [Tooltip("Ноге 1")]
     public Rigidbody leg1;
     [Tooltip("Ноге 2")]
     public Rigidbody leg2;
 
-    
+
     [Space]
     public CapsuleCollider slideCollider;
     public CapsuleCollider groundCollider;
@@ -63,14 +63,14 @@ public class HeroScript : MonoBehaviour
     private float _dx;
     private float _fly;
     private float _legTimer;
-    private UnityEngine.SpriteRenderer _sr;
+    public SpriteRenderer TorsoSR;
 
     private bool floating;
 
     private bool _died;
 
     private bool _jetJustEnded;
-    
+
     private GameController _game;
     private MainUI _ui;
     private Sounds _sounds;
@@ -80,7 +80,7 @@ public class HeroScript : MonoBehaviour
     private RigidbodyConstraints _originalConstraints;
 
     public float RemainingFly => FlyTime > 0 ? _flyTimer / FlyTime : 1f;
-    
+
     private Musician _musician;
 
     public bool Died => _died;
@@ -88,7 +88,6 @@ public class HeroScript : MonoBehaviour
     {
         _flyTimer = FlyTime;
         _rigidbody = GetComponent<Rigidbody>();
-        _sr = GetComponentInChildren<UnityEngine.SpriteRenderer>();
         assFlameCube = assFlame.GetComponent<MeshRenderer>();
 
         _ui = FindObjectOfType<MainUI>();
@@ -106,15 +105,16 @@ public class HeroScript : MonoBehaviour
     {
         leg1.centerOfMass = new Vector3(0, -0.2f, 0);
         leg2.centerOfMass = new Vector3(0, -0.2f, 0);
+        UpdateRewards();
     }
 
     public void OnLevelRestart()
     {
         slideCollider.enabled = true;
         groundCollider.height = _originalGroundColliderHeight;
-        
+
         _rigidbody.constraints = _originalConstraints;
-        
+
         transform.rotation = _originalRotation;
 
         ResetVelocity();
@@ -127,10 +127,10 @@ public class HeroScript : MonoBehaviour
     public void OnLevelEnter()
     {
         foreach (var cmp in GetComponents<HeroMod>()) Destroy(cmp);
-        
+
         ResetVelocity();
         ResetFuel();
-        
+
         _ignoreFallDamage = false;
     }
 
@@ -138,7 +138,7 @@ public class HeroScript : MonoBehaviour
     {
         // ignore fall damage on exit since some levels have a collider right under exit trigger and hero dies :(
         _ignoreFallDamage = true;
-        
+
         _sounds.PlayRandom("laugh");
     }
 
@@ -152,11 +152,11 @@ public class HeroScript : MonoBehaviour
             rig.velocity = Vector3.zero;
             rig.angularVelocity = Vector3.zero;
         }
-        
+
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.angularVelocity = Vector3.zero;
     }
-    
+
     internal void ResetFuel()
     {
         _flyTimer = FlyTime;
@@ -170,12 +170,12 @@ public class HeroScript : MonoBehaviour
         }
 
         _dx = Input.GetAxisRaw("Horizontal");
-        if (_dx < 0) _sr.flipX = true; 
-        if (_dx > 0) _sr.flipX = false;
+        if (_dx < 0) TorsoSR.flipX = true;
+        if (_dx > 0) TorsoSR.flipX = false;
 
         _fly = Input.GetAxisRaw("Jump");
-        if (_fly != 0) _sr.sprite = flySprite;
-        else _sr.sprite = standSprite;
+        if (_fly != 0) TorsoSR.sprite = flySprite;
+        else TorsoSR.sprite = standSprite;
 
 
         if (_fly != 0 && _flyTimer > 0)
@@ -186,7 +186,7 @@ public class HeroScript : MonoBehaviour
                 _musician?.OnStartAssFlame();
                 assFlame.Play();
                 assFlameCube.enabled = true;
-                
+
                 _sounds.PlayLoop("jet2_loop_b");
                 _jetJustEnded = true;
             }
@@ -196,14 +196,14 @@ public class HeroScript : MonoBehaviour
             _musician?.OnStopAssFlame();
             assFlame.Stop();
             assFlameCube.enabled = false;
-            
+
             _sounds.StopLoop("jet2_loop_b");
 
             if (Input.GetButtonDown("Jump"))
             {
                 _sounds.PlayRandom("fart");
             }
-            
+
             if (_fly != 0 && _jetJustEnded)
             {
                 _jetJustEnded = false;
@@ -230,7 +230,7 @@ public class HeroScript : MonoBehaviour
         {
             return;
         }
-        
+
         leg1.maxAngularVelocity = LegMaxAngVel;
         leg2.maxAngularVelocity = LegMaxAngVel;
 
@@ -276,7 +276,7 @@ public class HeroScript : MonoBehaviour
 
         _sounds.PlayRandom("grunt");
         _sounds.PlayRandom("crunchy_thump2");
-        
+
         _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |
                                  RigidbodyConstraints.FreezePositionZ;
 
@@ -295,47 +295,48 @@ public class HeroScript : MonoBehaviour
         {
             DieHero();
         }
-        
+
         if (collision.impulse.magnitude > 5f)
         {
-            _sounds.PlayRandom("pillow_");            
+            _sounds.PlayRandom("pillow_");
         }
         else if (collision.impulse.magnitude > 2f)
         {
-            _sounds.PlayRandom("weak_thump");            
+            _sounds.PlayRandom("weak_thump");
         }
     }
 
-    public void Reward(List<Rewards> rewards)
+    public void UpdateRewards()
     {
-        foreach (var reward in rewards)
+        RewardTopHat.SetActive(false);
+        RewardScarf.SetActive(false);
+        RewardBoot1.SetActive(false);
+        RewardBoot2.SetActive(false);
+        RewardCrown.SetActive(false);
+
+        foreach (var r in HeroStats.ExistingRewards)
         {
-            ApplyReward(reward);
+            ApplyReward(r);
         }
     }
 
     void ApplyReward(Rewards reward)
     {
-        // todo 
-        return;
-        if(!HeroStats.ExistingRewards.Contains(reward))
+        switch (reward)
         {
-            switch(reward)
-            {
-                case Rewards.TopHat:
-                    RewardTopHat.SetActive(true);
-                    break;
-                case Rewards.FireScarf:
-                    RewardScarf.SetActive(true);
-                    break;
-                case Rewards.RedBoots:
-                    RewardBoot1.SetActive(true);
-                    RewardBoot2.SetActive(true);
-                    break;
-                case Rewards.Crown:
-                    RewardCrown.SetActive(true);
-                    break;
-            }
+            case Rewards.TopHat:
+                RewardTopHat.SetActive(true);
+                break;
+            case Rewards.FireScarf:
+                RewardScarf.SetActive(true);
+                break;
+            case Rewards.RedBoots:
+                RewardBoot1.SetActive(true);
+                RewardBoot2.SetActive(true);
+                break;
+            case Rewards.Crown:
+                RewardCrown.SetActive(true);
+                break;
         }
     }
 }

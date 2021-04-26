@@ -62,7 +62,14 @@ public class FinishController : MonoBehaviour
         var displayedReward = rewards.Find(x => !HeroStats.ExistingRewards.Contains(x));
         ShowMsgBox(displayedReward);
 
-        _hero.Reward(rewards);
+        foreach (var reward in rewards)
+        {
+            if (!HeroStats.ExistingRewards.Contains(reward))
+            {
+                HeroStats.ExistingRewards.Add(reward);
+            }
+        }
+
         HeroStats.Reset();
         yield return new WaitForSeconds(1f);
         yield return Exit.transform.DOMoveY(-1.4f, 2f).SetEase(Ease.OutCubic).WaitForCompletion();
